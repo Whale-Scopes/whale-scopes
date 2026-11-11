@@ -1,0 +1,10 @@
+{
+  "_info": "threshold = Mindestgröße in US-Dollar. ciks = SEC-Nummern der Fonds (mehrere möglich). options = Optionen (Calls/Puts) mitzählen.",
+  "investors": [
+    { "id": "berkshire",     "name": "Berkshire Hathaway",    "sub": "Greg Abel, CEO · Warren Buffett, Chairman", "initials": "BH", "threshold": 1000000000, "ciks": ["1067983"], "options": false },
+    { "id": "ackman",        "name": "Bill Ackman",           "sub": "Pershing Square",                           "initials": "BA", "threshold": 500000000,  "ciks": ["2026053", "1336528"], "options": false },
+    { "id": "tepper",        "name": "David Tepper",          "sub": "Appaloosa Management",                      "initials": "DT", "threshold": 300000000,  "ciks": ["1656456"], "options": false },
+    { "id": "druckenmiller", "name": "Stanley Druckenmiller", "sub": "Duquesne Family Office",                    "initials": "SD", "threshold": 100000000,  "ciks": ["1536411"], "options": false },
+    { "id": "burry",         "name": "Michael Burry",         "sub": "Formerly Scion Asset Management",           "initials": "MB", "threshold": 100000000,  "ciks": ["1649339"], "options": true }
+  ]
+}

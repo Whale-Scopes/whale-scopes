@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whale Scopes – Big moves by big names</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F9FE; --card:#FFFFFF; --line:#DCE9F5; --text:#0E1B2A; --muted:#5A6B7D;
+    --baby:#A9D8F5; --baby-soft:#E3F2FC; --blue-ink:#0B4F86;
+    --sell-soft:#FFE9DE; --sell-ink:#9A3A0A;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter Tight',Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue-ink)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  header{background:#fff;border-bottom:1px solid var(--line)}
+  .bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;letter-spacing:.06em;color:var(--text);text-decoration:none}
+  .status{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);background:var(--baby-soft);border-radius:999px;padding:7px 12px}
+  .hero{padding:56px 0 24px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--blue-ink)}
+  h1{margin:12px 0 14px;font-size:clamp(36px,5.5vw,64px);line-height:1;font-weight:900;letter-spacing:-.02em}
+  .lead{margin:0;font-size:19px;line-height:1.5;color:#33465A;max-width:720px}
+  section.moves{padding:36px 0 12px}
+  .sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:20px}
+  h2{margin:0;font-size:36px;font-weight:900;letter-spacing:-.02em}
+  .sec-head p{margin:0;color:var(--muted);font-size:15px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(14,27,42,.04);animation:rise .5s ease-out both}
+  .card.top{border:2px solid var(--baby)}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.card{animation:none}}
+  .who{display:flex;align-items:center;gap:12px}
+  .avatar{width:52px;height:52px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;background:var(--baby-soft);color:var(--blue-ink);border:2px solid var(--baby)}
+  .name{font-weight:900;font-size:19px;line-height:1.15}
+  .sub{font-size:13px;color:var(--muted)}
+  .row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .label{display:inline-flex;align-items:center;gap:6px;font-weight:900;font-size:12px;letter-spacing:.08em;border-radius:7px;padding:6px 10px}
+  .label.buy{background:var(--baby);color:#06304F}
+  .label.sell{background:var(--sell-soft);color:var(--sell-ink)}
+  .new{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:var(--blue-ink);color:#fff;border-radius:4px;padding:3px 7px}
+  .threshold{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue-ink);border:1px dashed #8FBFE3;border-radius:6px;padding:4px 8px}
+  .company{font-size:22px;font-weight:800;line-height:1.15}
+  .ticker{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-top:3px}
+  .amount{font-size:50px;font-weight:900;line-height:.95;letter-spacing:-.03em}
+  .amount-note{font-size:14px;color:var(--muted);margin-top:6px}
+  .note{margin:0;font-size:15px;line-height:1.5;color:#33465A;flex-grow:1}
+  .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--muted);line-height:1.5}
+  .btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:10px;background:var(--baby-soft);color:var(--blue-ink);font-weight:700;font-size:14px;text-decoration:none}
+  .btn:hover{background:var(--baby)}
+  .empty{background:transparent;border:2px dashed var(--line);box-shadow:none;justify-content:center}
+  .empty .note{flex-grow:0}
+  .how{padding:44px 0 56px}
+  .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .how-grid div{border-top:3px solid var(--baby);padding-top:14px}
+  .how-grid strong{display:block;font-size:18px;margin-bottom:6px}
+  .how-grid span{font-size:15px;line-height:1.5;color:#33465A}
+  footer{border-top:1px solid var(--line);background:#fff}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:24px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#3E9BD8" stroke-width="2.2" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3.5"/><path d="M16 1v6M16 25v6M1 16h6M25 16h6"/></svg>
+      WHALE SCOPES
+    </a>
+    <span class="status" id="status" role="status">Loading…</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">BIG MOVES BY BIG NAMES</div>
+    <h1>What the big names just did with big money.</h1>
+    <p class="lead">One card per investor: their last big buy and their last big sell. A card only changes when a new move is big enough to clear that person's threshold — smaller trades never push a big one off the page.</p>
+  </section>
+
+  <section class="moves" aria-labelledby="buys-title">
+    <div class="sec-head">
+      <h2 id="buys-title">Biggest last buys</h2>
+      <p>Sorted by size · may be older moves</p>
+    </div>
+    <div class="grid" id="buys"></div>
+  </section>
+
+  <section class="moves" aria-labelledby="sells-title">
+    <div class="sec-head">
+      <h2 id="sells-title">Biggest last sells</h2>
+      <p>Sorted by size · may be older moves</p>
+    </div>
+    <div class="grid" id="sells"></div>
+  </section>
+
+  <section class="how" aria-labelledby="how-title">
+    <h2 id="how-title" style="margin-bottom:22px">How this page updates</h2>
+    <div class="how-grid">
+      <div><strong>A threshold for every person</strong><span>Each investor has their own minimum size. Only moves at or above it can appear.</span></div>
+      <div><strong>Only bigger news replaces a card</strong><span>A newer move that clears the threshold replaces the old one. Anything smaller is ignored, so the card stays.</span></div>
+      <div><strong>Published isn't traded</strong><span>Funds report holdings up to 45 days after each quarter ends. Values are reported or estimated, never the price paid.</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong style="color:var(--text);letter-spacing:.06em">WHALE SCOPES</strong>
+    <span>Information only, not investment advice. Data: SEC Form 13F filings.</span>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   Whale Scopes reads trades.json (next to this file). That file is kept
+   up to date automatically by scripts/update.mjs via GitHub Actions,
+   which also applies each investor's threshold. If trades.json can't be
+   loaded (e.g. the file is opened straight from your disk), the built-in
+   data below is shown instead.
+   ===================================================================== */
+const DATA_URL = 'trades.json';
+const RELOAD_MINUTES = 60;
+const NEW_BADGE_DAYS = 7;
+
+const FALLBACK = {
+  "lastChecked": null,
+  "investors": [
+    { "id": "berkshire", "name": "Berkshire Hathaway", "sub": "Greg Abel, CEO · Warren Buffett, Chairman", "initials": "BH", "threshold": 1000000000 },
+    { "id": "ackman", "name": "Bill Ackman", "sub": "Pershing Square", "initials": "BA", "threshold": 500000000 },
+    { "id": "tepper", "name": "David Tepper", "sub": "Appaloosa Management", "initials": "DT", "threshold": 300000000 },
+    { "id": "druckenmiller", "name": "Stanley Druckenmiller", "sub": "Duquesne Family Office", "initials": "SD", "threshold": 100000000 },
+    { "id": "burry", "name": "Michael Burry", "sub": "Formerly Scion Asset Management", "initials": "MB", "threshold": 100000000 }
+  ],
+  "trades": [
+    { "investor": "berkshire", "side": "buy", "label": "BIG BUY", "company": "Alphabet Inc.", "ticker": "GOOGL · GOOG", "value": 15500000000, "valueType": "estimate", "note": "Berkshire’s biggest buy of the quarter. Holdings up about 83% — now its third-largest stock.", "disclosed": "2026-08", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001067983", "addedAt": null, "auto": false },
+    { "investor": "berkshire", "side": "sell", "label": "POSITION REDUCTION", "company": "Bank of America", "ticker": "BAC", "value": 1600000000, "valueType": "estimate", "note": "About 30.2 million shares sold — the fifth quarter in a row Berkshire cut the bank.", "disclosed": "2026-08", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001067983", "addedAt": null, "auto": false },
+    { "investor": "ackman", "side": "buy", "label": "NEW POSITION", "company": "Visa Inc.", "ticker": "V", "value": 1120000000, "valueType": "position", "note": "A brand-new stake of 3.27 million shares, part of a bet on payment networks.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0002026053", "addedAt": null, "auto": false },
+    { "investor": "ackman", "side": "sell", "label": "BIG SELL", "company": "Universal Music Group", "ticker": "UMG", "value": 1500000000, "valueType": "reported", "note": "Pershing Square sold its entire Universal Music stake.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0002026053", "addedAt": null, "auto": false },
+    { "investor": "tepper", "side": "buy", "label": "POSITION INCREASE", "company": "Amazon.com", "ticker": "AMZN", "value": 1200000000, "valueType": "position", "note": "680,000 more shares (+16%). Amazon is now Appaloosa’s largest holding.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001656456", "addedAt": null, "auto": false },
+    { "investor": "tepper", "side": "sell", "label": "POSITION REDUCTION", "company": "Micron Technology", "ticker": "MU", "value": 796000000, "valueType": "estimate", "note": "690,000 shares sold, cutting the stake by about 41% — still his second-largest holding.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001656456", "addedAt": null, "auto": false },
+    { "investor": "druckenmiller", "side": "buy", "label": "POSITION INCREASE", "company": "Amazon.com", "ticker": "AMZN", "value": 239000000, "valueType": "position", "note": "Stake up more than 1,000% (shares plus call options) — now a top-10 position.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001536411", "addedAt": null, "auto": false },
+    { "investor": "burry", "side": "buy", "label": "NEW POSITION", "company": "Pfizer (call options)", "ticker": "PFE", "value": 152900000, "valueType": "notional", "note": "Call options on 6 million shares. Burry’s fund has filed no 13F since, so this is his last checkable big buy.", "disclosed": "2025-11-03", "asOf": "2025-09-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001649339", "addedAt": null, "auto": false },
+    { "investor": "burry", "side": "sell", "label": "BET AGAINST", "company": "Palantir (put options)", "ticker": "PLTR", "value": 912100000, "valueType": "notional", "note": "Puts on 5 million shares — a bet the stock falls. The premium actually paid was reportedly around $9M.", "disclosed": "2025-11-03", "asOf": "2025-09-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001649339", "addedAt": null, "auto": false }
+  ]
+};
+
+let INVESTORS = FALLBACK.investors;
+let shown = {};
+let lastChecked = null;
+let source = 'built-in data';
+
+function use(data) {
+  INVESTORS = data.investors && data.investors.length ? data.investors : FALLBACK.investors;
+  shown = {};
+  for (const t of data.trades || []) shown[t.investor + ':' + t.side] = t;
+  lastChecked = data.lastChecked || null;
+}
+
+async function check() {
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error(res.status);
+    use(await res.json());
+    source = 'SEC 13F filings';
+  } catch (e) {
+    if (!Object.keys(shown).length) use(FALLBACK);
+  }
+  render();
+  setStatus();
+}
+
+function setStatus() {
+  const when = lastChecked
+    ? 'Last checked ' + new Date(lastChecked).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })
+    : 'Built-in data';
+  document.getElementById('status').textContent = when + ' · ' + source;
+}
+
+/* 5) RENDERING */
+function money(v) {
+  if (v >= 1e9) return '$' + (v / 1e9).toFixed(v >= 1e10 ? 1 : 2).replace(/\.?0+$/, '') + 'B';
+  return '$' + Math.round(v / 1e6) + 'M';
+}
+const VALUE_NOTE = {
+  estimate: { buy: 'bought (estimate)', sell: 'sold (estimate)' },
+  position: { buy: 'reported position value', sell: 'reported position value' },
+  notional: { buy: 'notional value (shares controlled)', sell: 'notional value (shares controlled)' },
+  reported: { buy: 'bought (reported)', sell: 'stake sold (reported)' }
+};
+function date(d) {
+  if (!d) return '–';
+  const [y, m, day] = d.split('-').map(Number);
+  const opts = day ? { day: 'numeric', month: 'short', year: 'numeric' } : { month: 'short', year: 'numeric' };
+  return new Date(y, m - 1, day || 1).toLocaleDateString('en-US', opts);
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function card(inv, t, side, isTop) {
+  const head = `
+    <div class="who">
+      <div class="avatar" aria-hidden="true">${inv.initials}</div>
+      <div><div class="name">${esc(inv.name)}</div><div class="sub">${esc(inv.sub)}</div></div>
+    </div>`;
+  const thr = `<span class="threshold" title="Only moves of at least this size are shown">Threshold ≥ ${money(inv.threshold)}</span>`;
+  if (!t) {
+    return `<article class="card empty">${head}<div class="row">${thr}</div>
+      <p class="note">No ${side} above this threshold in the filings we track yet. The card fills in as soon as one is reported.</p></article>`;
+  }
+  const isNew = t.addedAt && (Date.now() - new Date(t.addedAt).getTime()) < NEW_BADGE_DAYS * 864e5;
+  const approx = t.valueType === 'estimate' ? '≈ ' : '';
+  const sym = (t.ticker || '').split(' ')[0];
+  const quote = 'https://www.google.com/finance?q=' + encodeURIComponent(sym || t.company);
+  return `
+    <article class="card${isTop ? ' top' : ''}">
+      ${head}
+      <div class="row">
+        <span class="label ${side}">${esc(t.label)}</span>${thr}${isNew ? '<span class="new">NEW</span>' : ''}
+      </div>
+      <div><div class="company">${esc(t.company)}</div><div class="ticker">${esc(t.ticker || '')}</div></div>
+      <div><div class="amount">${approx}${money(t.value)}</div><div class="amount-note">${(VALUE_NOTE[t.valueType] || VALUE_NOTE.estimate)[side]}</div></div>
+      <p class="note">${esc(t.note)}</p>
+      <div class="foot">
+        <div>Published ${date(t.disclosed)}<br>Holdings as of ${date(t.asOf)} · <a href="${esc(t.source)}" target="_blank" rel="noopener">Filing</a></div>
+        <a class="btn" href="${quote}" target="_blank" rel="noopener">${sym ? 'Find ' + esc(sym) : 'Find stock'}</a>
+      </div>
+    </article>`;
+}
+
+function renderSide(side, elId) {
+  const rows = INVESTORS.map(inv => ({ inv, t: shown[inv.id + ':' + side] }))
+    .sort((a, b) => (b.t ? b.t.value : -1) - (a.t ? a.t.value : -1));
+  document.getElementById(elId).innerHTML =
+    rows.map((r, i) => card(r.inv, r.t, side, i === 0 && r.t)).join('');
+}
+function render() { renderSide('buy', 'buys'); renderSide('sell', 'sells'); }
+
+/* 6) START */
+use(FALLBACK);
+render();
+check();
+setInterval(check, RELOAD_MINUTES * 60 * 1000);
+</script>
+</body>
+</html>

@@ -1,21 +1,177 @@
 {
-  "lastChecked": null,
+  "lastChecked": "2026-11-12T00:05:19.788Z",
   "investors": [
-    { "id": "berkshire", "name": "Berkshire Hathaway", "sub": "Greg Abel, CEO · Warren Buffett, Chairman", "initials": "BH", "threshold": 1000000000 },
-    { "id": "ackman", "name": "Bill Ackman", "sub": "Pershing Square", "initials": "BA", "threshold": 500000000 },
-    { "id": "tepper", "name": "David Tepper", "sub": "Appaloosa Management", "initials": "DT", "threshold": 300000000 },
-    { "id": "druckenmiller", "name": "Stanley Druckenmiller", "sub": "Duquesne Family Office", "initials": "SD", "threshold": 100000000 },
-    { "id": "burry", "name": "Michael Burry", "sub": "Formerly Scion Asset Management", "initials": "MB", "threshold": 100000000 }
+    {
+      "id": "berkshire",
+      "name": "Berkshire Hathaway",
+      "sub": "Greg Abel, CEO · Warren Buffett, Chairman",
+      "initials": "BH",
+      "threshold": 1000000000
+    },
+    {
+      "id": "ackman",
+      "name": "Bill Ackman",
+      "sub": "Pershing Square",
+      "initials": "BA",
+      "threshold": 500000000
+    },
+    {
+      "id": "tepper",
+      "name": "David Tepper",
+      "sub": "Appaloosa Management",
+      "initials": "DT",
+      "threshold": 300000000
+    },
+    {
+      "id": "druckenmiller",
+      "name": "Stanley Druckenmiller",
+      "sub": "Duquesne Family Office",
+      "initials": "SD",
+      "threshold": 100000000
+    },
+    {
+      "id": "burry",
+      "name": "Michael Burry",
+      "sub": "Formerly Scion Asset Management",
+      "initials": "MB",
+      "threshold": 100000000
+    }
   ],
   "trades": [
-    { "investor": "berkshire", "side": "buy", "label": "BIG BUY", "company": "Alphabet Inc.", "ticker": "GOOGL · GOOG", "value": 15500000000, "valueType": "estimate", "note": "Berkshire’s biggest buy of the quarter. Holdings up about 83% — now its third-largest stock.", "disclosed": "2026-08", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001067983", "addedAt": null, "auto": false },
-    { "investor": "berkshire", "side": "sell", "label": "POSITION REDUCTION", "company": "Bank of America", "ticker": "BAC", "value": 1600000000, "valueType": "estimate", "note": "About 30.2 million shares sold — the fifth quarter in a row Berkshire cut the bank.", "disclosed": "2026-08", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001067983", "addedAt": null, "auto": false },
-    { "investor": "ackman", "side": "buy", "label": "NEW POSITION", "company": "Visa Inc.", "ticker": "V", "value": 1120000000, "valueType": "position", "note": "A brand-new stake of 3.27 million shares, part of a bet on payment networks.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0002026053", "addedAt": null, "auto": false },
-    { "investor": "ackman", "side": "sell", "label": "BIG SELL", "company": "Universal Music Group", "ticker": "UMG", "value": 1500000000, "valueType": "reported", "note": "Pershing Square sold its entire Universal Music stake.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0002026053", "addedAt": null, "auto": false },
-    { "investor": "tepper", "side": "buy", "label": "POSITION INCREASE", "company": "Amazon.com", "ticker": "AMZN", "value": 1200000000, "valueType": "position", "note": "680,000 more shares (+16%). Amazon is now Appaloosa’s largest holding.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001656456", "addedAt": null, "auto": false },
-    { "investor": "tepper", "side": "sell", "label": "POSITION REDUCTION", "company": "Micron Technology", "ticker": "MU", "value": 796000000, "valueType": "estimate", "note": "690,000 shares sold, cutting the stake by about 41% — still his second-largest holding.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001656456", "addedAt": null, "auto": false },
-    { "investor": "druckenmiller", "side": "buy", "label": "POSITION INCREASE", "company": "Amazon.com", "ticker": "AMZN", "value": 239000000, "valueType": "position", "note": "Stake up more than 1,000% (shares plus call options) — now a top-10 position.", "disclosed": "2026-08-14", "asOf": "2026-06-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001536411", "addedAt": null, "auto": false },
-    { "investor": "burry", "side": "buy", "label": "NEW POSITION", "company": "Pfizer (call options)", "ticker": "PFE", "value": 152900000, "valueType": "notional", "note": "Call options on 6 million shares. Burry’s fund has filed no 13F since, so this is his last checkable big buy.", "disclosed": "2025-11-03", "asOf": "2025-09-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001649339", "addedAt": null, "auto": false },
-    { "investor": "burry", "side": "sell", "label": "BET AGAINST", "company": "Palantir (put options)", "ticker": "PLTR", "value": 912100000, "valueType": "notional", "note": "Puts on 5 million shares — a bet the stock falls. The premium actually paid was reportedly around $9M.", "disclosed": "2025-11-03", "asOf": "2025-09-30", "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001649339", "addedAt": null, "auto": false }
+    {
+      "side": "buy",
+      "label": "NEW POSITION",
+      "value": 27543790975,
+      "valueType": "position",
+      "note": "A brand-new stake of 483M shares.",
+      "investor": "berkshire",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
+      "ticker": "BAC",
+      "company": "Bank Of Amer Corp.",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "side": "sell",
+      "label": "BIG SELL",
+      "value": 25039178044,
+      "valueType": "estimate",
+      "note": "Entire stake sold (514M shares).",
+      "investor": "berkshire",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
+      "ticker": "BAC",
+      "company": "Bank America Corp.",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "side": "buy",
+      "label": "NEW POSITION",
+      "value": 1122065552,
+      "valueType": "position",
+      "note": "A brand-new stake of 3.3M shares.",
+      "investor": "ackman",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
+      "ticker": "V",
+      "company": "Visa Inc.",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "side": "sell",
+      "label": "POSITION REDUCTION",
+      "value": 688355474,
+      "valueType": "estimate",
+      "note": "Reported holdings cut by 25% (−2.9M shares).",
+      "investor": "ackman",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
+      "ticker": "AMZN",
+      "company": "Amazon Com Inc.",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "investor": "tepper",
+      "side": "buy",
+      "label": "POSITION INCREASE",
+      "company": "Amazon.com",
+      "ticker": "AMZN",
+      "value": 1200000000,
+      "valueType": "position",
+      "note": "680,000 more shares (+16%). Amazon is now Appaloosa’s largest holding.",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001656456",
+      "addedAt": null,
+      "auto": false
+    },
+    {
+      "side": "sell",
+      "label": "POSITION REDUCTION",
+      "value": 796460100,
+      "valueType": "estimate",
+      "note": "Reported holdings cut by 41% (−690K shares).",
+      "investor": "tepper",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/",
+      "ticker": "MU",
+      "company": "Micron Technology Inc.",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "investor": "druckenmiller",
+      "side": "buy",
+      "label": "POSITION INCREASE",
+      "company": "Amazon.com",
+      "ticker": "AMZN",
+      "value": 239000000,
+      "valueType": "position",
+      "note": "Stake up more than 1,000% (shares plus call options) — now a top-10 position.",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001536411",
+      "addedAt": null,
+      "auto": false
+    },
+    {
+      "side": "buy",
+      "label": "NEW POSITION",
+      "value": 152880000,
+      "valueType": "notional",
+      "note": "New call options on 6M shares. Value is notional, not money paid.",
+      "investor": "burry",
+      "disclosed": "2025-11-03",
+      "asOf": "2025-09-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
+      "ticker": "PFE (call options)",
+      "company": "Pfizer Inc. (call options)",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "side": "sell",
+      "label": "BET AGAINST",
+      "value": 912100000,
+      "valueType": "notional",
+      "note": "Put options on 5M shares — a bet the stock falls. Value is notional, not money paid.",
+      "investor": "burry",
+      "disclosed": "2025-11-03",
+      "asOf": "2025-09-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
+      "ticker": "PLTR (put options)",
+      "company": "Palantir Technologies Inc. (put options)",
+      "addedAt": null,
+      "auto": true
+    }
   ]
 }

@@ -20,7 +20,7 @@ jobs:
 
       - name: Read SEC filings and update trades.json
         env:
-          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
           OPENFIGI_KEY: ${{ secrets.OPENFIGI_KEY }}
         run: node scripts/update.mjs
 

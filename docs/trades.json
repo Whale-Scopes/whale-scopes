@@ -1,5 +1,5 @@
 {
-  "lastChecked": "2026-11-12T00:05:19.788Z",
+  "lastChecked": "2026-11-12T00:35:41.030Z",
   "investors": [
     {
       "id": "berkshire",
@@ -40,31 +40,31 @@
   "trades": [
     {
       "side": "buy",
-      "label": "NEW POSITION",
-      "value": 27543790975,
-      "valueType": "position",
-      "note": "A brand-new stake of 483M shares.",
+      "label": "BIG BUY",
+      "value": 17155532184,
+      "valueType": "estimate",
+      "note": "Reported holdings up 83% (+48M shares).",
+      "investor": "berkshire",
+      "disclosed": "2026-08-14",
+      "asOf": "2026-06-30",
+      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
+      "ticker": "GOOG · GOOGL",
+      "company": "Alphabet Inc.",
+      "addedAt": null,
+      "auto": true
+    },
+    {
+      "side": "sell",
+      "label": "POSITION REDUCTION",
+      "value": 1722513947,
+      "valueType": "estimate",
+      "note": "Reported holdings cut by 6% (−30M shares).",
       "investor": "berkshire",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
       "ticker": "BAC",
       "company": "Bank Of Amer Corp.",
-      "addedAt": null,
-      "auto": true
-    },
-    {
-      "side": "sell",
-      "label": "BIG SELL",
-      "value": 25039178044,
-      "valueType": "estimate",
-      "note": "Entire stake sold (514M shares).",
-      "investor": "berkshire",
-      "disclosed": "2026-08-14",
-      "asOf": "2026-06-30",
-      "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
-      "ticker": "BAC",
-      "company": "Bank America Corp.",
       "addedAt": null,
       "auto": true
     },

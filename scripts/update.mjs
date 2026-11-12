@@ -88,7 +88,7 @@ const normName = s => s.toUpperCase().replace(/[^A-Z0-9 ]/g, ' ').replace(/\s+/g
 function aggregate(rows) {
   const g = new Map();
   for (const r of rows) {
-    const k = normName(r.issuer) + '|' + (r.putCall || 'sh');
+    const k = r.cusip.slice(0, 6) + '|' + (r.putCall || 'sh');
     const x = g.get(k) || { issuer: r.issuer, putCall: r.putCall, cusips: new Set(), value: 0, shares: 0 };
     x.cusips.add(r.cusip); x.value += r.value; x.shares += r.shares;
     g.set(k, x);

@@ -1,5 +1,5 @@
 {
-  "lastChecked": "2026-11-16T16:01:03.036Z",
+  "lastChecked": "2026-11-16T20:10:05.466Z",
   "investors": [
     {
       "id": "berkshire",
@@ -48,11 +48,11 @@
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
-      "ticker": "GOOGL · GOOG",
+      "ticker": "GOOG · GOOGL",
       "company": "Alphabet Inc.",
+      "isin": "US02079K1079",
       "addedAt": null,
-      "auto": true,
-      "isin": "US02079K3059"
+      "auto": true
     },
     {
       "side": "sell",
@@ -66,9 +66,9 @@
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
       "ticker": "BAC",
       "company": "Bank of America Corp.",
+      "isin": "US0605051046",
       "addedAt": null,
-      "auto": true,
-      "isin": "US0605051046"
+      "auto": true
     },
     {
       "side": "buy",
@@ -81,10 +81,10 @@
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
       "ticker": "V",
-      "company": "Visa Inc.",
+      "company": "Visa Inc-class A Shares",
+      "isin": "US92826C8394",
       "addedAt": null,
-      "auto": true,
-      "isin": "US92826C8394"
+      "auto": true
     },
     {
       "side": "sell",
@@ -98,9 +98,9 @@
       "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
       "ticker": "AMZN",
       "company": "Amazon.com Inc.",
+      "isin": "US0231351067",
       "addedAt": null,
-      "auto": true,
-      "isin": "US0231351067"
+      "auto": true
     },
     {
       "investor": "tepper",
@@ -130,9 +130,9 @@
       "source": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/",
       "ticker": "MU",
       "company": "Micron Technology Inc.",
+      "isin": "US5951121038",
       "addedAt": null,
-      "auto": true,
-      "isin": "US5951121038"
+      "auto": true
     },
     {
       "investor": "druckenmiller",
@@ -162,9 +162,9 @@
       "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
       "ticker": "PFE",
       "company": "Pfizer Inc. (Call-Optionen)",
+      "isin": "US7170811035",
       "addedAt": null,
-      "auto": true,
-      "isin": "US7170811035"
+      "auto": true
     },
     {
       "side": "sell",
@@ -177,10 +177,10 @@
       "asOf": "2025-09-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
       "ticker": "PLTR",
-      "company": "Palantir Technologies Inc. (Put-Optionen)",
+      "company": "Palantir Technologies Inc-a (Put-Optionen)",
+      "isin": "US69608A1088",
       "addedAt": null,
-      "auto": true,
-      "isin": "US69608A1088"
+      "auto": true
     }
   ]
 }

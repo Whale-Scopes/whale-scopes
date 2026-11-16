@@ -162,14 +162,17 @@ export function findMoves(inv, curG, prevG) {
 // ---------- names and tickers ----------
 const SMALL = { INC: 'Inc.', CORP: 'Corp.', CO: 'Co.', LTD: 'Ltd.', PLC: 'plc', HLDGS: 'Holdings', HLDG: 'Holding', GRP: 'Group', INTL: 'International', TECHNOLOGIES: 'Technologies' };
 const LOWER = new Set(['OF', 'AND', 'THE', 'DE', 'FOR']);
-function prettyName(s) {
-  s = s.replace(/[-\s]+(CL(ASS)?\s*[A-Z]|COM(MON)?(\s+STK|\s+STOCK)?|SHS|ADR|SPONSORED ADR|NEW)$/i, '').trim();
+const KEEP = new Set(['US', 'USA', 'AG', 'SE', 'NV', 'SA', 'ETF', 'AI', 'IBM', 'AMD', 'UBS', 'HSBC', 'ASML', 'CVS', 'JPMORGAN']);
+export function prettyName(s) {
+  s = s.replace(/\s*-\s*(CL(ASS)?\b.*|[A-Z]|.*\bSHARES?)$/i, '');            // "-CL A", "-A", "-CLASS A SHARES"
+  s = s.replace(/[\s]+(CL(ASS)?\s*[A-Z]|COM(MON)?(\s+STK|\s+STOCK)?|SHS|ADR|SPONSORED ADR|NEW)$/i, '').trim();
   return s.split(/\s+/).map((w, i) => {
     const u = w.toUpperCase().replace(/[.,]/g, '');
     if (SMALL[u]) return SMALL[u];
     if (i > 0 && LOWER.has(u)) return w.toLowerCase();
     if (/^[A-Z]{1,3}$/.test(u) && !/[AEIOU]/.test(u)) return u; // abbreviations like "NY", "JPM"
-    return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+    if (KEEP.has(u)) return u;
+    return w.split('-').map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase()).join('-');
   }).join(' ').replace(/\s*&\s*/g, ' & ');
 }
 

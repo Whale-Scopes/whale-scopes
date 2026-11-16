@@ -5,15 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Whale Scopes – Die großen Trades der großen Investoren</title>
 <meta name="description" content="Was Berkshire Hathaway, Bill Ackman, Michael Burry & Co. zuletzt gekauft und verkauft haben – verständlich aufbereitet aus den offiziellen SEC-Meldungen.">
+<meta name="theme-color" content="#F4F9FE">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script src="common.js"></script>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
     <a class="logo" href="./">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="#3E9BD8" stroke-width="2.2" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3.5"/><path d="M16 1v6M16 25v6M1 16h6M25 16h6"/></svg>
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke-width="2.2" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3.5"/><path d="M16 1v6M16 25v6M1 16h6M25 16h6"/></svg>
       WHALE SCOPES
     </a>
     <span class="status" id="status" role="status">Lädt …</span>
@@ -22,13 +26,13 @@
 
 <main class="wrap">
   <section class="hero">
-    <div class="eyebrow">GROSSE TRADES VON GROSSEN NAMEN</div>
-    <h1>Was die großen Investoren zuletzt mit viel Geld gemacht haben.</h1>
-    <p class="lead">Pro Investor eine Karte: der letzte große Kauf und der letzte große Verkauf. Eine Karte ändert sich nur, wenn ein neuer Trade groß genug für den Schwellenwert dieser Person ist. Kleinere Trades verdrängen nie einen großen.</p>
+    <div class="eyebrow reveal">GROSSE TRADES VON GROSSEN NAMEN</div>
+    <h1 class="reveal" style="--delay:80ms">Was die großen Investoren zuletzt mit viel Geld gemacht haben.</h1>
+    <p class="lead reveal" style="--delay:160ms">Pro Investor eine Karte: der letzte große Kauf und der letzte große Verkauf. Eine Karte ändert sich nur, wenn ein neuer Trade groß genug für den Schwellenwert dieser Person ist. Kleinere Trades verdrängen nie einen großen.</p>
   </section>
 
   <section class="moves" aria-labelledby="buys-title">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <h2 id="buys-title">Die größten letzten Käufe</h2>
       <p>Nach Größe sortiert · können auch ältere Trades sein</p>
     </div>
@@ -36,7 +40,7 @@
   </section>
 
   <section class="moves" aria-labelledby="sells-title">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <h2 id="sells-title">Die größten letzten Verkäufe</h2>
       <p>Nach Größe sortiert · können auch ältere Trades sein</p>
     </div>
@@ -44,11 +48,11 @@
   </section>
 
   <section class="how" aria-labelledby="how-title">
-    <h2 id="how-title" style="margin-bottom:22px">So funktioniert die Seite</h2>
+    <h2 id="how-title" class="reveal" style="margin-bottom:22px">So funktioniert die Seite</h2>
     <div class="how-grid">
-      <div><strong>Ein Schwellenwert pro Person</strong><span>Jeder Investor hat eine eigene Mindestgröße. Nur Trades ab dieser Größe erscheinen hier.</span></div>
-      <div><strong>Nur Größeres ersetzt eine Karte</strong><span>Ein neuerer Trade über der Schwelle ersetzt den alten. Alles Kleinere wird ignoriert – die Karte bleibt stehen.</span></div>
-      <div><strong>Gemeldet heißt nicht gerade gehandelt</strong><span>Fonds melden ihre Bestände bis zu 45 Tage nach Quartalsende. Beträge sind gemeldet oder geschätzt – nie der tatsächlich gezahlte Preis.</span></div>
+      <div class="reveal"><strong>Ein Schwellenwert pro Person</strong><span>Jeder Investor hat eine eigene Mindestgröße. Nur Trades ab dieser Größe erscheinen hier.</span></div>
+      <div class="reveal" style="--delay:100ms"><strong>Nur Größeres ersetzt eine Karte</strong><span>Ein neuerer Trade über der Schwelle ersetzt den alten. Alles Kleinere wird ignoriert – die Karte bleibt stehen.</span></div>
+      <div class="reveal" style="--delay:200ms"><strong>Gemeldet heißt nicht gerade gehandelt</strong><span>Fonds melden ihre Bestände bis zu 45 Tage nach Quartalsende. Beträge sind gemeldet oder geschätzt – nie der tatsächlich gezahlte Preis.</span></div>
     </div>
   </section>
 </main>
@@ -60,6 +64,7 @@
       <p class="disclaimer" style="margin:6px 0 0">Nur zur Information, keine Anlageberatung. Daten: SEC-Meldungen (Form 13F). Mit „Werbung“ gekennzeichnete Links sind Affiliate-Links: Eröffnest du darüber ein Depot, erhalten wir eventuell eine Provision. Für dich ändert sich am Preis nichts.</p>
     </div>
     <nav class="foot-links" aria-label="Rechtliches">
+      <a href="politiker.html">Politiker-Trades</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
     </nav>
@@ -68,10 +73,10 @@
 
 <script>
 /* =====================================================================
-   Whale Scopes liest trades.json (Daten, täglich automatisch erneuert)
-   und brokers.json (Broker-Links). Fehlt eine Datei, z. B. wenn die
-   Seite direkt von der Festplatte geöffnet wird, nimmt sie die
-   eingebauten Daten unten.
+   Investoren-Seite. Liest trades.json (Daten, täglich automatisch
+   erneuert) und brokers.json (Broker-Links). Fehlt eine Datei, z. B.
+   wenn die Seite direkt von der Festplatte geöffnet wird, nimmt sie
+   die eingebauten Daten unten.
    ===================================================================== */
 const DATA_URL = 'trades.json';
 const BROKERS_URL = 'brokers.json';
@@ -79,7 +84,7 @@ const RELOAD_MINUTES = 60;
 const NEW_BADGE_DAYS = 7;
 
 const FALLBACK = {
-  "lastChecked": "2026-11-16T16:01:03.036Z",
+  "lastChecked": "2026-11-16T20:10:05.466Z",
   "investors": [
     {
       "id": "berkshire",
@@ -128,11 +133,11 @@ const FALLBACK = {
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
-      "ticker": "GOOGL · GOOG",
+      "ticker": "GOOG · GOOGL",
       "company": "Alphabet Inc.",
+      "isin": "US02079K1079",
       "addedAt": null,
-      "auto": true,
-      "isin": "US02079K3059"
+      "auto": true
     },
     {
       "side": "sell",
@@ -146,9 +151,9 @@ const FALLBACK = {
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
       "ticker": "BAC",
       "company": "Bank of America Corp.",
+      "isin": "US0605051046",
       "addedAt": null,
-      "auto": true,
-      "isin": "US0605051046"
+      "auto": true
     },
     {
       "side": "buy",
@@ -161,10 +166,10 @@ const FALLBACK = {
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
       "ticker": "V",
-      "company": "Visa Inc.",
+      "company": "Visa Inc-class A Shares",
+      "isin": "US92826C8394",
       "addedAt": null,
-      "auto": true,
-      "isin": "US92826C8394"
+      "auto": true
     },
     {
       "side": "sell",
@@ -178,9 +183,9 @@ const FALLBACK = {
       "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
       "ticker": "AMZN",
       "company": "Amazon.com Inc.",
+      "isin": "US0231351067",
       "addedAt": null,
-      "auto": true,
-      "isin": "US0231351067"
+      "auto": true
     },
     {
       "investor": "tepper",
@@ -210,9 +215,9 @@ const FALLBACK = {
       "source": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000003/",
       "ticker": "MU",
       "company": "Micron Technology Inc.",
+      "isin": "US5951121038",
       "addedAt": null,
-      "auto": true,
-      "isin": "US5951121038"
+      "auto": true
     },
     {
       "investor": "druckenmiller",
@@ -242,9 +247,9 @@ const FALLBACK = {
       "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
       "ticker": "PFE",
       "company": "Pfizer Inc. (Call-Optionen)",
+      "isin": "US7170811035",
       "addedAt": null,
-      "auto": true,
-      "isin": "US7170811035"
+      "auto": true
     },
     {
       "side": "sell",
@@ -257,10 +262,10 @@ const FALLBACK = {
       "asOf": "2025-09-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
       "ticker": "PLTR",
-      "company": "Palantir Technologies Inc. (Put-Optionen)",
+      "company": "Palantir Technologies Inc-a (Put-Optionen)",
+      "isin": "US69608A1088",
       "addedAt": null,
-      "auto": true,
-      "isin": "US69608A1088"
+      "auto": true
     }
   ]
 };
@@ -298,26 +303,15 @@ function use(data) {
   lastChecked = data.lastChecked || null;
 }
 
-async function getJson(url) {
-  const res = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
-  if (!res.ok) throw new Error(res.status);
-  return res.json();
-}
-
 async function check() {
-  try { use(await getJson(DATA_URL)); } catch (e) { if (!Object.keys(shown).length) use(FALLBACK); }
-  try { BROKERS = await getJson(BROKERS_URL); } catch (e) { /* eingebaute Broker behalten */ }
+  try { use(await WS.getJson(DATA_URL)); } catch (e) { if (!Object.keys(shown).length) use(FALLBACK); }
+  try { BROKERS = await WS.getJson(BROKERS_URL); } catch (e) { /* eingebaute Broker behalten */ }
   render();
-  setStatus();
-}
-
-function setStatus() {
   document.getElementById('status').textContent = lastChecked
     ? 'Zuletzt geprüft: ' + new Date(lastChecked).toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' })
     : 'Eingebaute Daten';
 }
 
-/* ---------- Texte und Formate ---------- */
 const LABELS = {
   'BIG BUY': 'GROSSER KAUF',
   'NEW POSITION': 'NEUE POSITION',
@@ -332,77 +326,69 @@ const VALUE_NOTE = {
   notional: { buy: 'Nominalwert der Optionen', sell: 'Nominalwert der Optionen' },
   reported: { buy: 'gekauft (gemeldet)', sell: 'verkauft (gemeldet)' }
 };
-function money(v) {
-  if (v >= 1e9) {
-    const n = (v / 1e9).toLocaleString('de-DE', { maximumFractionDigits: v >= 1e10 ? 1 : 2 });
-    return n + ' Mrd. $';
-  }
-  return Math.round(v / 1e6).toLocaleString('de-DE') + ' Mio. $';
-}
-function date(d) {
-  if (!d) return '–';
-  const [y, m, day] = d.split('-').map(Number);
-  const opts = day ? { day: 'numeric', month: 'short', year: 'numeric' } : { month: 'long', year: 'numeric' };
-  return new Date(y, m - 1, day || 1).toLocaleDateString('de-DE', opts);
-}
-const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const esc = WS.esc;
 
-/* ---------- Broker-Buttons (Werbung) ---------- */
-function brokerBox(t) {
-  if (t.label === 'BET AGAINST') return ''; // bei Wetten gegen eine Aktie keine Kauf-Buttons
-  const list = (BROKERS.brokers || []).filter(b => b.active !== false && b.url);
-  if (!list.length) return '';
-  const buttons = list.map(b => {
-    const href = b.deeplink && t.isin ? b.deeplink.replace('{isin}', encodeURIComponent(t.isin)) : b.url;
-    return `<a class="broker-btn" href="${esc(href)}" target="_blank" rel="sponsored noopener">${esc(b.name)}
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>`;
-  }).join('');
-  return `<div class="brokers">
-      <div class="brokers-head"><span>${esc(BROKERS.heading || 'Diese Aktie handeln bei')}</span><span class="ad">${esc((BROKERS.adLabel || 'Werbung').toUpperCase())}</span></div>
-      <div class="brokers-row">${buttons}</div>
-    </div>`;
-}
-
-/* ---------- Karten ---------- */
-function card(inv, t, side, isTop) {
+function card(inv, t, side, isTop, i) {
+  const delay = `style="--delay:${(i % 3) * 90}ms"`;
   const head = `
     <div class="who">
       <div class="avatar" aria-hidden="true">${esc(inv.initials)}</div>
       <div><div class="name">${esc(inv.name)}</div><div class="sub">${esc(inv.sub)}</div></div>
     </div>`;
-  const thr = `<span class="threshold" title="Nur Trades ab dieser Größe werden angezeigt">Schwelle ≥ ${money(inv.threshold)}</span>`;
+  const thr = `<span class="threshold" title="Nur Trades ab dieser Größe werden angezeigt">Schwelle ≥ ${WS.money(inv.threshold)}</span>`;
   const word = side === 'buy' ? 'Kauf' : 'Verkauf';
   if (!t) {
-    return `<article class="card empty">${head}<div class="row">${thr}</div>
+    return `<article class="card empty reveal" ${delay}>${head}<div class="row">${thr}</div>
       <p class="note">Noch kein ${word} über dieser Schwelle in den ausgewerteten Meldungen. Die Karte füllt sich, sobald einer gemeldet wird.</p></article>`;
   }
   const isNew = t.addedAt && (Date.now() - new Date(t.addedAt).getTime()) < NEW_BADGE_DAYS * 864e5;
   const approx = t.valueType === 'estimate' ? '≈ ' : '';
   return `
-    <article class="card${isTop ? ' top' : ''}">
+    <article class="card reveal${isTop ? ' top' : ''}" ${delay}>
       ${head}
       <div class="row">
         <span class="label ${side}">${esc(LABELS[t.label] || t.label)}</span>${thr}${isNew ? '<span class="new">NEU</span>' : ''}
       </div>
       <div><div class="company">${esc(t.company)}</div><div class="ticker">${esc(t.ticker)}</div></div>
-      <div><div class="amount">${approx}${money(t.value)}</div><div class="amount-note">${(VALUE_NOTE[t.valueType] || VALUE_NOTE.estimate)[side]}</div></div>
+      <div><div class="amount">${approx}${WS.money(t.value)}</div><div class="amount-note">${(VALUE_NOTE[t.valueType] || VALUE_NOTE.estimate)[side]}</div></div>
       <p class="note">${esc(t.note)}</p>
-      ${brokerBox(t)}
-      <div class="meta">Veröffentlicht: ${date(t.disclosed)} · Bestände vom ${date(t.asOf)}<br>
+      ${t.label === 'BET AGAINST' ? '' : WS.brokerBox(BROKERS, t.isin)}
+      <div class="meta">Veröffentlicht: ${WS.date(t.disclosed)} · Bestände vom ${WS.date(t.asOf)}<br>
         <a href="${esc(t.source)}" target="_blank" rel="noopener">Original-Meldung bei der SEC</a></div>
     </article>`;
+}
+
+// 6. Karte: Wechsel zur Politiker-Seite (im dunkelblauen Look der anderen Seite)
+function gateCard(i) {
+  return `
+    <a class="gate reveal" href="politiker.html" style="--delay:${(i % 3) * 90}ms">
+      <div>
+        <div class="gate-kicker">POLITIKER-TRADES</div>
+        <div class="gate-title" style="margin-top:10px">Was kaufen Politiker?</div>
+      </div>
+      <div class="gate-avatars" aria-hidden="true"><span>DT</span><span>NP</span><span>RK</span></div>
+      <div class="gate-text">Trump, Pelosi und Khanna – ihre größten gemeldeten Käufe, auf einer eigenen Seite.</div>
+      <div class="gate-cta">Zu den Politikern
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </a>`;
 }
 
 function renderSide(side, elId) {
   const rows = INVESTORS.map(inv => ({ inv, t: shown[inv.id + ':' + side] }))
     .sort((a, b) => (b.t ? b.t.value : -1) - (a.t ? a.t.value : -1));
-  document.getElementById(elId).innerHTML = rows.map((r, i) => card(r.inv, r.t, side, i === 0 && r.t)).join('');
+  let html = rows.map((r, i) => card(r.inv, r.t, side, i === 0 && r.t, i)).join('');
+  if (side === 'buy') html += gateCard(rows.length);
+  document.getElementById(elId).innerHTML = html;
 }
-function render() { renderSide('buy', 'buys'); renderSide('sell', 'sells'); }
+let rendered = false;
+function render() {
+  renderSide('buy', 'buys'); renderSide('sell', 'sells');
+  // nur beim ersten Mal sanft einblenden, spätere Aktualisierungen ohne Animation
+  if (rendered) document.querySelectorAll('#buys .reveal, #sells .reveal').forEach(e => e.classList.add('in'));
+  rendered = true;
+  WS.reveal();
+}
 
-/* ---------- Start ---------- */
-use(FALLBACK);
-render();
 check();
 setInterval(check, RELOAD_MINUTES * 60 * 1000);
 </script>

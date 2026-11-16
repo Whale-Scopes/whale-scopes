@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politiker-Trades – Whale Scopes</title>
+<meta name="description" content="Die größten gemeldeten Aktienkäufe von Donald Trump, Nancy & Paul Pelosi und Ro Khanna – aus den offiziellen Meldungen.">
+<meta name="theme-color" content="#08142A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script src="common.js"></script>
+</head>
+<body class="dark">
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="./">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke-width="2.2" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3.5"/><path d="M16 1v6M16 25v6M1 16h6M25 16h6"/></svg>
+      WHALE SCOPES
+    </a>
+    <span class="status" id="status" role="status">Politiker-Trades</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow reveal">POLITIKER-TRADES</div>
+    <h1 class="reveal" style="--delay:80ms">Was Politiker zuletzt gekauft haben.</h1>
+    <p class="lead reveal" style="--delay:160ms">Pro Person der letzte große Kauf aus den offiziellen Meldungen. Auch hier gilt: Eine Karte ändert sich nur, wenn ein neuer Kauf über dem Schwellenwert dieser Person gemeldet wird.</p>
+    <p class="notice reveal" style="--delay:240ms"><strong>Andere Quelle als bei den Fonds:</strong> Politiker melden einzelne Trades nur als <strong>Spanne</strong> (z. B. 1–5 Mio. $), teils mit Wochen Verzögerung. Diese Daten werden derzeit von Hand gepflegt. Deshalb stehen sie bewusst auf einer eigenen Seite.</p>
+  </section>
+
+  <section class="moves" aria-labelledby="buys-title">
+    <div class="sec-head reveal">
+      <h2 id="buys-title">Die größten letzten Käufe</h2>
+      <p id="updated">Nach Größe sortiert</p>
+    </div>
+    <div class="grid" id="buys"></div>
+  </section>
+
+  <section class="how" aria-labelledby="how-title">
+    <h2 id="how-title" class="reveal" style="margin-bottom:22px">So liest du die Karten</h2>
+    <div class="how-grid">
+      <div class="reveal"><strong>Spannen statt Beträge</strong><span>Gemeldet wird nur ein Bereich wie „1–5 Mio. $“. Der genaue Betrag und der Kaufpreis sind nicht bekannt. Die Schwelle prüft den unteren Wert.</span></div>
+      <div class="reveal" style="--delay:100ms"><strong>Wer gehandelt hat</strong><span>Gemeldet werden auch Trades von Ehepartnern oder Vermögensverwaltern. Steht in der Meldung, wer gehandelt hat, siehst du es auf der Karte.</span></div>
+      <div class="reveal" style="--delay:200ms"><strong>Gehandelt, dann gemeldet</strong><span>Zwischen Trade und Veröffentlichung liegen oft mehrere Wochen. Auf jeder Karte stehen deshalb beide Daten.</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <strong style="color:var(--text);letter-spacing:.06em">WHALE SCOPES</strong>
+      <p class="disclaimer" style="margin:6px 0 0">Nur zur Information, keine Anlageberatung und keine politische Bewertung. Daten: öffentliche Meldungen beim US-Repräsentantenhaus (STOCK Act) und bei der US-Ethikbehörde OGE. Mit „Werbung“ gekennzeichnete Links sind Affiliate-Links: Eröffnest du darüber ein Depot, erhalten wir eventuell eine Provision.</p>
+    </div>
+    <nav class="foot-links" aria-label="Rechtliches">
+      <a href="./">Investoren-Trades</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   Politiker-Seite. Liest politicians.json (von Hand gepflegt) und
+   brokers.json. Fehlt eine Datei, nimmt sie die eingebauten Daten.
+   ===================================================================== */
+const DATA_URL = 'politicians.json';
+const BROKERS_URL = 'brokers.json';
+
+const FALLBACK = {
+  "_info": "Von Hand gepflegt. Beträge sind die gemeldeten Spannen (rangeLow/rangeHigh in US-Dollar). Eine Karte nur ersetzen, wenn ein neuerer Kauf mit rangeLow >= threshold gemeldet wurde.",
+  "lastUpdated": "2026-11-16",
+  "politicians": [
+    { "id": "trump", "name": "Donald Trump", "sub": "US-Präsident", "initials": "DT", "threshold": 1000000 },
+    { "id": "pelosi", "name": "Nancy & Paul Pelosi", "sub": "Abgeordnete (Kalifornien) · Trades von Ehemann Paul", "initials": "NP", "threshold": 250000 },
+    { "id": "khanna", "name": "Ro Khanna", "sub": "Abgeordneter (Kalifornien)", "initials": "RK", "threshold": 100000 }
+  ],
+  "trades": [
+    {
+      "politician": "trump",
+      "label": "GROSSER KAUF",
+      "company": "Meta Platforms Inc.",
+      "ticker": "META",
+      "isin": "US30303M1027",
+      "rangeLow": 5000001,
+      "rangeHigh": 25000000,
+      "tradeDate": "2026-08-21",
+      "disclosed": "2026-10",
+      "note": "Größter Kauf in der Meldung für August 2026. Das Depot liegt laut Berichten in einem Trust, den seine Kinder kontrollieren; laut Weißem Haus handelt der Präsident es nicht selbst.",
+      "source": "https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index",
+      "sourceLabel": "Meldung bei der Ethikbehörde OGE (Form 278-T)"
+    },
+    {
+      "politician": "pelosi",
+      "label": "KAUF",
+      "company": "Bloom Energy Corp.",
+      "ticker": "BE",
+      "isin": "US0937121079",
+      "rangeLow": 1000001,
+      "rangeHigh": 5000000,
+      "tradeDate": "2026-07-24",
+      "disclosed": "2026-08-21",
+      "note": "Gekauft von Paul Pelosi. Am 28. Juli kamen weitere Aktien für 0,5–1 Mio. $ und Call-Optionen dazu.",
+      "source": "https://disclosures-clerk.house.gov/FinancialDisclosure",
+      "sourceLabel": "Meldung beim US-Repräsentantenhaus"
+    },
+    {
+      "politician": "khanna",
+      "label": "KAUF",
+      "company": "CarParts.com Inc.",
+      "ticker": "PRTS",
+      "isin": null,
+      "rangeLow": 100001,
+      "rangeHigh": 250000,
+      "tradeDate": "2026-05-15",
+      "disclosed": "2026-06-09",
+      "note": "Khanna meldet sehr viele Trades, meist in kleinen Spannen. Dieser Kauf liegt deutlich darüber.",
+      "source": "https://disclosures-clerk.house.gov/FinancialDisclosure",
+      "sourceLabel": "Meldung beim US-Repräsentantenhaus"
+    }
+  ]
+};
+const FALLBACK_BROKERS = {
+  "_info": "Hier stehen ALLE Broker-Links der Seite. Sobald du Affiliate-Links hast, ersetze 'url' durch deinen Partnerlink. 'deeplink' später für Links direkt zur Aktie, mit {isin} als Platzhalter (z. B. https://…?isin={isin}). 'active': false blendet einen Broker aus.",
+  "heading": "Diese Aktie handeln bei",
+  "adLabel": "Werbung",
+  "brokers": [
+    {
+      "id": "traderepublic",
+      "name": "Trade Republic",
+      "url": "https://traderepublic.com/de-de",
+      "deeplink": null,
+      "active": true
+    },
+    {
+      "id": "scalable",
+      "name": "Scalable Capital",
+      "url": "https://de.scalable.capital/",
+      "deeplink": null,
+      "active": true
+    }
+  ]
+};
+
+let DATA = FALLBACK;
+let BROKERS = FALLBACK_BROKERS;
+const esc = WS.esc;
+
+async function load() {
+  try { DATA = await WS.getJson(DATA_URL); } catch (e) { /* eingebaute Daten */ }
+  try { BROKERS = await WS.getJson(BROKERS_URL); } catch (e) { /* eingebaute Broker */ }
+  render();
+}
+
+function card(p, t, isTop, i) {
+  const delay = `style="--delay:${(i % 3) * 90}ms"`;
+  const head = `
+    <div class="who">
+      <div class="avatar" aria-hidden="true">${esc(p.initials)}</div>
+      <div><div class="name">${esc(p.name)}</div><div class="sub">${esc(p.sub)}</div></div>
+    </div>`;
+  const thr = `<span class="threshold" title="Nur Käufe, deren gemeldete Spanne bei mindestens diesem Betrag beginnt">Schwelle ≥ ${WS.short(p.threshold)}</span>`;
+  if (!t) {
+    return `<article class="card empty reveal" ${delay}>${head}<div class="row">${thr}</div>
+      <p class="note">Noch kein Kauf über dieser Schwelle in den ausgewerteten Meldungen.</p></article>`;
+  }
+  return `
+    <article class="card reveal${isTop ? ' top' : ''}" ${delay}>
+      ${head}
+      <div class="row"><span class="label buy">${esc(t.label || 'KAUF')}</span>${thr}</div>
+      <div><div class="company">${esc(t.company)}</div><div class="ticker">${esc(t.ticker)}</div></div>
+      <div><div class="amount range">${WS.range(t.rangeLow, t.rangeHigh)}</div><div class="amount-note">gemeldete Spanne</div></div>
+      <p class="note">${esc(t.note)}</p>
+      ${WS.brokerBox(BROKERS, t.isin)}
+      <div class="meta">Gekauft: ${WS.date(t.tradeDate)} · Gemeldet: ${WS.date(t.disclosed)}<br>
+        <a href="${esc(t.source)}" target="_blank" rel="noopener">${esc(t.sourceLabel || 'Original-Meldung')}</a></div>
+    </article>`;
+}
+
+// 4. Karte: zurück zu den Investoren (im hellen Look der anderen Seite)
+function gateCard(i) {
+  return `
+    <a class="gate reveal" href="./" style="--delay:${(i % 3) * 90}ms">
+      <div>
+        <div class="gate-kicker">INVESTOREN-TRADES</div>
+        <div class="gate-title" style="margin-top:10px">Was kaufen die Investoren?</div>
+      </div>
+      <div class="gate-avatars" aria-hidden="true"><span>BH</span><span>BA</span><span>SD</span><span>MB</span><span>+1</span></div>
+      <div class="gate-text">Berkshire, Ackman, Tepper, Druckenmiller und Burry – Käufe und Verkäufe aus den SEC-Meldungen.</div>
+      <div class="gate-cta">Zu den Investoren
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </a>`;
+}
+
+function render() {
+  const byPerson = {};
+  for (const t of DATA.trades || []) byPerson[t.politician] = t;
+  const rows = (DATA.politicians || []).map(p => ({ p, t: byPerson[p.id] }))
+    .sort((a, b) => (b.t ? b.t.rangeLow : -1) - (a.t ? a.t.rangeLow : -1));
+  document.getElementById('buys').innerHTML =
+    rows.map((r, i) => card(r.p, r.t, i === 0 && r.t, i)).join('') + gateCard(rows.length);
+  if (DATA.lastUpdated) document.getElementById('updated').textContent = 'Nach Größe sortiert · Stand: ' + WS.date(DATA.lastUpdated);
+  WS.reveal();
+}
+
+load();
+</script>
+</body>
+</html>

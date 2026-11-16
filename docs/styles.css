@@ -1,4 +1,5 @@
-/* Whale Scopes – gemeinsames Design für alle Seiten */
+/* Whale Scopes – gemeinsames Design für alle Seiten
+   Hell (Investoren) und Dunkelblau (Politiker, <body class="dark">) */
 
 /* Schriften liegen auf dem eigenen Server (keine Verbindung zu Google) */
 @font-face {
@@ -16,28 +17,50 @@
   font-display: swap;
 }
 
+/* ---------- Farben ---------- */
 :root {
-  --bg: #F4F9FE; --card: #FFFFFF; --line: #DCE9F5; --text: #0E1B2A; --muted: #5A6B7D;
-  --baby: #A9D8F5; --baby-soft: #E3F2FC; --blue-ink: #0B4F86;
+  --bg: #F4F9FE; --surface: #FFFFFF; --card: #FFFFFF; --line: #DCE9F5;
+  --text: #0E1B2A; --body: #33465A; --muted: #5A6B7D;
+  --baby: #A9D8F5; --baby-soft: #E3F2FC; --blue-ink: #0B4F86; --accent: #3E9BD8;
+  --buy-bg: #A9D8F5; --buy-ink: #06304F;
   --sell-soft: #FFE9DE; --sell-ink: #9A3A0A;
+  --dashed: #8FBFE3; --btn-bg: #FFFFFF; --ad-bg: #FFFFFF; --ad-line: #B9CCDD;
+  --shadow: 0 1px 2px rgba(14,27,42,.04);
+  /* die "andere Welt" für die Wechsel-Karte */
+  --gate-bg: #0B1A33; --gate-text: #EAF2FB; --gate-muted: #A9C2DD; --gate-line: #24406B;
+  color-scheme: light;
 }
+body.dark {
+  --bg: #08142A; --surface: #0B1A33; --card: #10223F; --line: #1F3A63;
+  --text: #EAF2FB; --body: #C3D3E6; --muted: #93A9C4;
+  --baby: #A9D8F5; --baby-soft: #16305A; --blue-ink: #A9D8F5; --accent: #A9D8F5;
+  --buy-bg: #A9D8F5; --buy-ink: #06233D;
+  --dashed: #3D6596; --btn-bg: #0B1A33; --ad-bg: #0B1A33; --ad-line: #355987;
+  --shadow: 0 1px 3px rgba(0,0,0,.35);
+  --gate-bg: #F4F9FE; --gate-text: #0E1B2A; --gate-muted: #4B5D70; --gate-line: #CFE3F4;
+  color-scheme: dark;
+}
+
+/* ---------- Grundlagen ---------- */
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter Tight', Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: var(--blue-ink); }
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
 /* Kopfzeile */
-header { background: #fff; border-bottom: 1px solid var(--line); }
+header { background: var(--surface); border-bottom: 1px solid var(--line); }
 .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; letter-spacing: .06em; color: var(--text); text-decoration: none; }
+.logo svg { stroke: var(--accent); }
 .status { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); background: var(--baby-soft); border-radius: 999px; padding: 7px 12px; }
 
 /* Startbereich */
 .hero { padding: 56px 0 24px; }
 .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--blue-ink); }
 h1 { margin: 12px 0 14px; font-size: clamp(34px, 5.5vw, 62px); line-height: 1.02; font-weight: 900; letter-spacing: -.02em; }
-.lead { margin: 0; font-size: 19px; line-height: 1.5; color: #33465A; max-width: 740px; }
+.lead { margin: 0; font-size: 19px; line-height: 1.5; color: var(--body); max-width: 740px; }
+.notice { margin-top: 22px; max-width: 740px; font-size: 15px; line-height: 1.55; color: var(--body); background: var(--baby-soft); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
 
 /* Abschnitte und Karten */
 section.moves { padding: 36px 0 12px; }
@@ -45,25 +68,24 @@ section.moves { padding: 36px 0 12px; }
 h2 { margin: 0; font-size: 36px; font-weight: 900; letter-spacing: -.02em; }
 .sec-head p { margin: 0; color: var(--muted); font-size: 15px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 1px 2px rgba(14,27,42,.04); animation: rise .5s ease-out both; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
 .card.top { border: 2px solid var(--baby); }
-@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) { .card { animation: none; } }
 .who { display: flex; align-items: center; gap: 12px; }
 .avatar { width: 52px; height: 52px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; background: var(--baby-soft); color: var(--blue-ink); border: 2px solid var(--baby); }
 .name { font-weight: 900; font-size: 19px; line-height: 1.15; }
 .sub { font-size: 13px; color: var(--muted); }
 .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .label { display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 12px; letter-spacing: .08em; border-radius: 7px; padding: 6px 10px; }
-.label.buy { background: var(--baby); color: #06304F; }
+.label.buy { background: var(--buy-bg); color: var(--buy-ink); }
 .label.sell { background: var(--sell-soft); color: var(--sell-ink); }
-.new { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; background: var(--blue-ink); color: #fff; border-radius: 4px; padding: 3px 7px; }
-.threshold { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue-ink); border: 1px dashed #8FBFE3; border-radius: 6px; padding: 4px 8px; }
+.new { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; background: var(--blue-ink); color: var(--surface); border-radius: 4px; padding: 3px 7px; }
+.threshold { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue-ink); border: 1px dashed var(--dashed); border-radius: 6px; padding: 4px 8px; }
 .company { font-size: 22px; font-weight: 800; line-height: 1.15; }
 .ticker { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); margin-top: 3px; }
 .amount { font-size: 50px; font-weight: 900; line-height: .95; letter-spacing: -.03em; }
+.amount.range { font-size: 44px; }
 .amount-note { font-size: 14px; color: var(--muted); margin-top: 6px; }
-.note { margin: 0; font-size: 15px; line-height: 1.5; color: #33465A; flex-grow: 1; }
+.note { margin: 0; font-size: 15px; line-height: 1.5; color: var(--body); flex-grow: 1; }
 .meta { font-size: 12px; color: var(--muted); line-height: 1.5; border-top: 1px solid var(--line); padding-top: 12px; }
 .empty { background: transparent; border: 2px dashed var(--line); box-shadow: none; justify-content: center; }
 .empty .note { flex-grow: 0; }
@@ -71,21 +93,36 @@ h2 { margin: 0; font-size: 36px; font-weight: 900; letter-spacing: -.02em; }
 /* Broker-Buttons (Werbung) */
 .brokers { background: var(--baby-soft); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .brokers-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 700; color: var(--blue-ink); }
-.ad { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--muted); border: 1px solid #B9CCDD; border-radius: 4px; padding: 2px 6px; background: #fff; }
+.ad { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--muted); border: 1px solid var(--ad-line); border-radius: 4px; padding: 2px 6px; background: var(--ad-bg); }
 .brokers-row { display: flex; flex-wrap: wrap; gap: 8px; }
-.broker-btn { flex: 1 1 auto; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 0 10px; border-radius: 10px; background: #fff; border: 1px solid var(--baby); color: var(--text); font-weight: 800; font-size: 13px; text-decoration: none; }
-.broker-btn:hover { background: var(--baby); }
+.broker-btn { flex: 1 1 auto; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 0 10px; border-radius: 10px; background: var(--btn-bg); border: 1px solid var(--baby); color: var(--text); font-weight: 800; font-size: 13px; text-decoration: none; transition: background .2s ease, color .2s ease; }
+.broker-btn:hover { background: var(--baby); color: #06233D; }
 .broker-btn svg { flex: none; }
+
+/* Wechsel-Karte zur anderen Seite (Politiker <-> Investoren) */
+.gate { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 260px; padding: 28px; border-radius: 20px; background: var(--gate-bg); color: var(--gate-text); border: 1px solid var(--gate-line); text-decoration: none; transition: transform .35s ease, box-shadow .35s ease; }
+.gate:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(8,20,42,.25); }
+.gate .gate-kicker { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #A9D8F5; }
+body.dark .gate .gate-kicker { color: #0B4F86; }
+.gate .gate-title { font-size: 34px; font-weight: 900; line-height: 1.02; letter-spacing: -.02em; }
+.gate .gate-text { font-size: 15px; line-height: 1.5; color: var(--gate-muted); }
+.gate .gate-cta { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; }
+.gate .gate-cta svg { transition: transform .35s ease; }
+.gate:hover .gate-cta svg { transform: translateX(4px); }
+.gate .gate-avatars { display: flex; }
+.gate .gate-avatars span { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; background: #16305A; color: #A9D8F5; border: 2px solid var(--gate-bg); margin-left: -8px; }
+.gate .gate-avatars span:first-child { margin-left: 0; }
+body.dark .gate .gate-avatars span { background: #E3F2FC; color: #0B4F86; }
 
 /* Erklärung */
 .how { padding: 44px 0 56px; }
 .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
 .how-grid div { border-top: 3px solid var(--baby); padding-top: 14px; }
 .how-grid strong { display: block; font-size: 18px; margin-bottom: 6px; }
-.how-grid span { font-size: 15px; line-height: 1.5; color: #33465A; }
+.how-grid span { font-size: 15px; line-height: 1.5; color: var(--body); }
 
 /* Fußzeile */
-footer { border-top: 1px solid var(--line); background: #fff; }
+footer { border-top: 1px solid var(--line); background: var(--surface); }
 .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 28px 24px; font-size: 13px; color: var(--muted); line-height: 1.6; }
 .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
 .foot-links a { color: var(--text); font-weight: 700; text-decoration: none; }
@@ -96,6 +133,16 @@ footer { border-top: 1px solid var(--line); background: #fff; }
 .legal { max-width: 760px; padding: 48px 24px 64px; }
 .legal h1 { font-size: clamp(32px, 5vw, 48px); }
 .legal h2 { font-size: 22px; margin: 32px 0 8px; }
-.legal p, .legal li { font-size: 16px; line-height: 1.65; color: #33465A; }
+.legal p, .legal li { font-size: 16px; line-height: 1.65; color: var(--body); }
 .placeholder { background: #FFF6D6; border: 1px dashed #D8B64A; border-radius: 12px; padding: 14px 16px; color: #5C4A0E; font-size: 14px; line-height: 1.55; }
 .back { display: inline-block; margin-bottom: 8px; font-weight: 700; text-decoration: none; }
+
+/* ---------- Sanfte Bewegung beim Scrollen ---------- */
+/* Nur wenn JavaScript läuft (Klasse "js" am <html>), sonst ist alles sofort sichtbar */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); transition-delay: var(--delay, 0ms); }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .gate, .gate .gate-cta svg, .broker-btn { transition: none; }
+}

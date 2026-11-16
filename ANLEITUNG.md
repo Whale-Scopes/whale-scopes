@@ -66,3 +66,14 @@ Die Buttons sind automatisch mit „Werbung“ gekennzeichnet.
 ## Design
 
 Farben, Schriften und Abstände für alle Seiten stehen in **`docs/styles.css`**. Die Schriften liegen in `docs/fonts/` (lokal, keine Verbindung zu Google).
+
+## Politiker-Seite
+
+`docs/politiker.html` zeigt die größten gemeldeten Käufe von Politikern im dunkelblauen Design. Die Daten stehen in **`docs/politicians.json`** und werden **von Hand** gepflegt (keine Automatik):
+
+- `politicians` – Personen mit Untertitel, Initialen und Schwellenwert (`threshold`, US-Dollar).
+- `trades` – pro Person der aktuell gezeigte Kauf. `rangeLow`/`rangeHigh` = gemeldete Spanne in US-Dollar.
+- Regel: Einen Eintrag nur ersetzen, wenn ein **neuerer** Kauf gemeldet wurde, dessen `rangeLow` mindestens so groß wie der Schwellenwert ist.
+- Nach einer Änderung `lastUpdated` auf das heutige Datum setzen.
+
+Quellen: Abgeordnete → disclosures-clerk.house.gov, Präsident → Ethikbehörde OGE (Form 278-T).

@@ -1,0 +1,53 @@
+{
+  "_info": "Von Hand gepflegt. Beträge sind die gemeldeten Spannen (rangeLow/rangeHigh in US-Dollar). Eine Karte nur ersetzen, wenn ein neuerer Kauf mit rangeLow >= threshold gemeldet wurde.",
+  "lastUpdated": "2026-11-16",
+  "politicians": [
+    { "id": "trump", "name": "Donald Trump", "sub": "US-Präsident", "initials": "DT", "threshold": 1000000 },
+    { "id": "pelosi", "name": "Nancy & Paul Pelosi", "sub": "Abgeordnete (Kalifornien) · Trades von Ehemann Paul", "initials": "NP", "threshold": 250000 },
+    { "id": "khanna", "name": "Ro Khanna", "sub": "Abgeordneter (Kalifornien)", "initials": "RK", "threshold": 100000 }
+  ],
+  "trades": [
+    {
+      "politician": "trump",
+      "label": "GROSSER KAUF",
+      "company": "Meta Platforms Inc.",
+      "ticker": "META",
+      "isin": "US30303M1027",
+      "rangeLow": 5000001,
+      "rangeHigh": 25000000,
+      "tradeDate": "2026-08-21",
+      "disclosed": "2026-10",
+      "note": "Größter Kauf in der Meldung für August 2026. Das Depot liegt laut Berichten in einem Trust, den seine Kinder kontrollieren; laut Weißem Haus handelt der Präsident es nicht selbst.",
+      "source": "https://extapps2.oge.gov/201/Presiden.nsf/PAS+Index",
+      "sourceLabel": "Meldung bei der Ethikbehörde OGE (Form 278-T)"
+    },
+    {
+      "politician": "pelosi",
+      "label": "KAUF",
+      "company": "Bloom Energy Corp.",
+      "ticker": "BE",
+      "isin": "US0937121079",
+      "rangeLow": 1000001,
+      "rangeHigh": 5000000,
+      "tradeDate": "2026-07-24",
+      "disclosed": "2026-08-21",
+      "note": "Gekauft von Paul Pelosi. Am 28. Juli kamen weitere Aktien für 0,5–1 Mio. $ und Call-Optionen dazu.",
+      "source": "https://disclosures-clerk.house.gov/FinancialDisclosure",
+      "sourceLabel": "Meldung beim US-Repräsentantenhaus"
+    },
+    {
+      "politician": "khanna",
+      "label": "KAUF",
+      "company": "CarParts.com Inc.",
+      "ticker": "PRTS",
+      "isin": null,
+      "rangeLow": 100001,
+      "rangeHigh": 250000,
+      "tradeDate": "2026-05-15",
+      "disclosed": "2026-06-09",
+      "note": "Khanna meldet sehr viele Trades, meist in kleinen Spannen. Dieser Kauf liegt deutlich darüber.",
+      "source": "https://disclosures-clerk.house.gov/FinancialDisclosure",
+      "sourceLabel": "Meldung beim US-Repräsentantenhaus"
+    }
+  ]
+}

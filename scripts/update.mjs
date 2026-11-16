@@ -110,8 +110,9 @@ async function portfolioFor(inv, filings, period) {
 }
 
 // ---------- turning two quarters into moves ----------
-const fmtShares = n => n >= 1e6 ? (n / 1e6).toFixed(n >= 1e7 ? 0 : 1).replace(/\.0$/, '') + 'M'
-  : n >= 1e3 ? Math.round(n / 1e3) + 'K' : String(n);
+const fmtShares = n => n >= 1e6
+  ? (n / 1e6).toLocaleString('de-DE', { maximumFractionDigits: n >= 1e7 ? 0 : 1 }) + ' Mio.'
+  : Math.round(n).toLocaleString('de-DE');
 
 export function findMoves(inv, curG, prevG) {
   const best = { buy: null, sell: null };
@@ -134,20 +135,20 @@ export function findMoves(inv, curG, prevG) {
     let label, note, valueType = pc ? 'notional' : 'estimate';
     if (pc === 'put') {
       label = 'BET AGAINST';
-      note = `Put options on ${fmtShares(cs)} shares — a bet the stock falls. Value is notional, not money paid.`;
+      note = `Put-Optionen auf ${fmtShares(cs)} Aktien – eine Wette auf fallende Kurse. Nominalwert, nicht der eingesetzte Betrag.`;
     } else if (ps === 0) {
       label = 'NEW POSITION';
-      note = pc ? `New call options on ${fmtShares(cs)} shares. Value is notional, not money paid.` : `A brand-new stake of ${fmtShares(cs)} shares.`;
+      note = pc ? `Neue Call-Optionen auf ${fmtShares(cs)} Aktien. Nominalwert, nicht der eingesetzte Betrag.` : `Komplett neue Position mit ${fmtShares(cs)} Aktien.`;
       if (!pc) valueType = 'position';
     } else if (cs === 0) {
       label = 'BIG SELL';
-      note = `Entire stake sold (${fmtShares(ps)} shares).`;
+      note = `Position komplett verkauft (${fmtShares(ps)} Aktien).`;
     } else if (d > 0) {
       label = amount >= BIG_MULTIPLE * inv.threshold ? 'BIG BUY' : 'POSITION INCREASE';
-      note = `Reported holdings up ${pct}% (+${fmtShares(d)} shares).` + (pc ? ' Value is notional, not money paid.' : '');
+      note = `Gemeldeter Bestand um ${pct} % erhöht (+${fmtShares(d)} Aktien).` + (pc ? ' Nominalwert, nicht der eingesetzte Betrag.' : '');
     } else {
       label = amount >= BIG_MULTIPLE * inv.threshold ? 'BIG SELL' : 'POSITION REDUCTION';
-      note = `Reported holdings cut by ${-pct}% (−${fmtShares(-d)} shares).`;
+      note = `Gemeldeter Bestand um ${-pct} % reduziert (−${fmtShares(-d)} Aktien).`;
     }
 
     if (amount < inv.threshold) continue;
@@ -160,13 +161,30 @@ export function findMoves(inv, curG, prevG) {
 
 // ---------- names and tickers ----------
 const SMALL = { INC: 'Inc.', CORP: 'Corp.', CO: 'Co.', LTD: 'Ltd.', PLC: 'plc', HLDGS: 'Holdings', HLDG: 'Holding', GRP: 'Group', INTL: 'International', TECHNOLOGIES: 'Technologies' };
+const LOWER = new Set(['OF', 'AND', 'THE', 'DE', 'FOR']);
 function prettyName(s) {
-  return s.split(/\s+/).map(w => {
+  s = s.replace(/[-\s]+(CL(ASS)?\s*[A-Z]|COM(MON)?(\s+STK|\s+STOCK)?|SHS|ADR|SPONSORED ADR|NEW)$/i, '').trim();
+  return s.split(/\s+/).map((w, i) => {
     const u = w.toUpperCase().replace(/[.,]/g, '');
     if (SMALL[u]) return SMALL[u];
+    if (i > 0 && LOWER.has(u)) return w.toLowerCase();
     if (/^[A-Z]{1,3}$/.test(u) && !/[AEIOU]/.test(u)) return u; // abbreviations like "NY", "JPM"
     return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
   }).join(' ').replace(/\s*&\s*/g, ' & ');
+}
+
+// ISIN = Länderkürzel + CUSIP + Prüfziffer (nur für US-Wertpapiere eindeutig ableitbar)
+export function cusipToIsin(cusip) {
+  if (!/^[0-9]{3}[0-9A-Z]{5}[0-9]$/.test(cusip)) return null;
+  const body = 'US' + cusip;
+  const digits = body.split('').map(c => /[0-9]/.test(c) ? c : String(c.charCodeAt(0) - 55)).join('');
+  let sum = 0;
+  for (let i = 0; i < digits.length; i++) {
+    let n = Number(digits[digits.length - 1 - i]);
+    if (i % 2 === 0) { n *= 2; if (n > 9) n -= 9; }
+    sum += n;
+  }
+  return body + ((10 - (sum % 10)) % 10);
 }
 
 async function lookupTickers(cusips) {
@@ -182,7 +200,7 @@ async function lookupTickers(cusips) {
       });
       if (!res.ok) throw new Error('OpenFIGI ' + res.status);
       const data = await res.json();
-      data.forEach((d, j) => { const t = d.data && d.data[0] && d.data[0].ticker; if (t) out[batch[j]] = t; });
+      data.forEach((d, j) => { const x = d.data && d.data[0]; if (x && x.ticker) out[batch[j]] = { ticker: x.ticker, name: x.name || '' }; });
     } catch (e) { console.warn('Ticker lookup failed (names are still shown):', e.message); }
     await sleep(2500);
   }
@@ -229,9 +247,11 @@ async function main() {
   // tickers for the chosen moves only
   const tickers = await lookupTickers([...new Set(candidates.flatMap(c => c.cusips))]);
   for (const c of candidates) {
-    const t = [...new Set(c.cusips.map(x => tickers[x]).filter(Boolean))];
-    c.ticker = t.join(' · ') + (c.putCall ? ` (${c.putCall} options)` : '');
-    c.company = prettyName(c.issuer) + (c.putCall ? ` (${c.putCall} options)` : '');
+    const found = c.cusips.map(x => tickers[x]).filter(Boolean);
+    const optWord = c.putCall === 'put' ? 'Put-Optionen' : 'Call-Optionen';
+    c.ticker = [...new Set(found.map(f => f.ticker))].join(' · ');
+    c.company = prettyName(found[0] && found[0].name ? found[0].name : c.issuer) + (c.putCall ? ` (${optWord})` : '');
+    c.isin = cusipToIsin(c.cusips[0]);
     delete c.issuer; delete c.cusips; delete c.putCall;
   }
 

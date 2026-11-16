@@ -4,7 +4,7 @@
     {
       "id": "berkshire",
       "name": "Berkshire Hathaway",
-      "sub": "Greg Abel, CEO · Warren Buffett, Chairman",
+      "sub": "Greg Abel (CEO) · Warren Buffett (Chairman)",
       "initials": "BH",
       "threshold": 1000000000
     },
@@ -32,7 +32,7 @@
     {
       "id": "burry",
       "name": "Michael Burry",
-      "sub": "Formerly Scion Asset Management",
+      "sub": "Früher Scion Asset Management",
       "initials": "MB",
       "threshold": 100000000
     }
@@ -43,37 +43,39 @@
       "label": "BIG BUY",
       "value": 17155532184,
       "valueType": "estimate",
-      "note": "Reported holdings up 83% (+48M shares).",
+      "note": "Gemeldeter Bestand um 83 % erhöht (+48 Mio. Aktien).",
       "investor": "berkshire",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
-      "ticker": "GOOG · GOOGL",
+      "ticker": "GOOGL · GOOG",
       "company": "Alphabet Inc.",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US02079K3059"
     },
     {
       "side": "sell",
       "label": "POSITION REDUCTION",
       "value": 1722513947,
       "valueType": "estimate",
-      "note": "Reported holdings cut by 6% (−30M shares).",
+      "note": "Gemeldeter Bestand um 6 % reduziert (−30 Mio. Aktien).",
       "investor": "berkshire",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/",
       "ticker": "BAC",
-      "company": "Bank Of Amer Corp.",
+      "company": "Bank of America Corp.",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US0605051046"
     },
     {
       "side": "buy",
       "label": "NEW POSITION",
       "value": 1122065552,
       "valueType": "position",
-      "note": "A brand-new stake of 3.3M shares.",
+      "note": "Komplett neue Position mit 3,3 Mio. Aktien.",
       "investor": "ackman",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
@@ -81,44 +83,47 @@
       "ticker": "V",
       "company": "Visa Inc.",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US92826C8394"
     },
     {
       "side": "sell",
       "label": "POSITION REDUCTION",
       "value": 688355474,
       "valueType": "estimate",
-      "note": "Reported holdings cut by 25% (−2.9M shares).",
+      "note": "Gemeldeter Bestand um 25 % reduziert (−2,9 Mio. Aktien).",
       "investor": "ackman",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126003790/",
       "ticker": "AMZN",
-      "company": "Amazon Com Inc.",
+      "company": "Amazon.com Inc.",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US0231351067"
     },
     {
       "investor": "tepper",
       "side": "buy",
       "label": "POSITION INCREASE",
-      "company": "Amazon.com",
+      "company": "Amazon.com Inc.",
       "ticker": "AMZN",
       "value": 1200000000,
       "valueType": "position",
-      "note": "680,000 more shares (+16%). Amazon is now Appaloosa’s largest holding.",
+      "note": "680.000 Aktien mehr (+16 %). Amazon ist jetzt die größte Position von Appaloosa.",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001656456",
       "addedAt": null,
-      "auto": false
+      "auto": false,
+      "isin": "US0231351067"
     },
     {
       "side": "sell",
       "label": "POSITION REDUCTION",
       "value": 796460100,
       "valueType": "estimate",
-      "note": "Reported holdings cut by 41% (−690K shares).",
+      "note": "Gemeldeter Bestand um 41 % reduziert (−690.000 Aktien).",
       "investor": "tepper",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
@@ -126,52 +131,56 @@
       "ticker": "MU",
       "company": "Micron Technology Inc.",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US5951121038"
     },
     {
       "investor": "druckenmiller",
       "side": "buy",
       "label": "POSITION INCREASE",
-      "company": "Amazon.com",
+      "company": "Amazon.com Inc.",
       "ticker": "AMZN",
       "value": 239000000,
       "valueType": "position",
-      "note": "Stake up more than 1,000% (shares plus call options) — now a top-10 position.",
+      "note": "Bestand um mehr als 1.000 % erhöht (Aktien plus Call-Optionen) – jetzt eine Top-10-Position.",
       "disclosed": "2026-08-14",
       "asOf": "2026-06-30",
       "source": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=13F-HR&CIK=0001536411",
       "addedAt": null,
-      "auto": false
+      "auto": false,
+      "isin": "US0231351067"
     },
     {
       "side": "buy",
       "label": "NEW POSITION",
       "value": 152880000,
       "valueType": "notional",
-      "note": "New call options on 6M shares. Value is notional, not money paid.",
+      "note": "Neue Call-Optionen auf 6 Mio. Aktien. Nominalwert, nicht der eingesetzte Betrag.",
       "investor": "burry",
       "disclosed": "2025-11-03",
       "asOf": "2025-09-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
-      "ticker": "PFE (call options)",
-      "company": "Pfizer Inc. (call options)",
+      "ticker": "PFE",
+      "company": "Pfizer Inc. (Call-Optionen)",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US7170811035"
     },
     {
       "side": "sell",
       "label": "BET AGAINST",
       "value": 912100000,
       "valueType": "notional",
-      "note": "Put options on 5M shares — a bet the stock falls. Value is notional, not money paid.",
+      "note": "Put-Optionen auf 5 Mio. Aktien – eine Wette auf fallende Kurse. Nominalwert, nicht der eingesetzte Betrag.",
       "investor": "burry",
       "disclosed": "2025-11-03",
       "asOf": "2025-09-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1649339/000164933925000007/",
-      "ticker": "PLTR (put options)",
-      "company": "Palantir Technologies Inc. (put options)",
+      "ticker": "PLTR",
+      "company": "Palantir Technologies Inc. (Put-Optionen)",
       "addedAt": null,
-      "auto": true
+      "auto": true,
+      "isin": "US69608A1088"
     }
   ]
 }

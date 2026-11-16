@@ -1,0 +1,21 @@
+{
+  "_info": "Hier stehen ALLE Broker-Links der Seite. Sobald du Affiliate-Links hast, ersetze 'url' durch deinen Partnerlink. 'deeplink' später für Links direkt zur Aktie, mit {isin} als Platzhalter (z. B. https://…?isin={isin}). 'active': false blendet einen Broker aus.",
+  "heading": "Diese Aktie handeln bei",
+  "adLabel": "Werbung",
+  "brokers": [
+    {
+      "id": "traderepublic",
+      "name": "Trade Republic",
+      "url": "https://traderepublic.com/de-de",
+      "deeplink": null,
+      "active": true
+    },
+    {
+      "id": "scalable",
+      "name": "Scalable Capital",
+      "url": "https://de.scalable.capital/",
+      "deeplink": null,
+      "active": true
+    }
+  ]
+}

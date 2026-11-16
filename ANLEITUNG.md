@@ -47,3 +47,22 @@ Wird ein Schwellenwert erhöht, verschwinden Karten, die darunter liegen, beim n
 - **Tickersymbole** kommen von OpenFIGI (kostenlos, ohne Schlüssel). Optional: einen kostenlosen Schlüssel bei https://www.openfigi.com/api holen und als Secret `OPENFIGI_KEY` eintragen.
 - Das Skript speichert bei jedem Lauf das Prüfdatum. Dadurch gibt es täglich eine kleine Änderung, und GitHub pausiert den Zeitplan nicht wegen Inaktivität. Falls er doch mal pausiert wird, schickt GitHub eine E-Mail – dann im Tab „Actions“ einmal „Enable workflow“ klicken.
 - Keine Anlageberatung.
+
+## Broker-Links ändern
+
+Alle Broker-Buttons kommen aus **`docs/brokers.json`**:
+
+- `url` – der Link hinter dem Button. Hier deinen **Affiliate-Link** eintragen, sobald du ihn hast.
+- `deeplink` – später für Links direkt zur Aktie, mit `{isin}` als Platzhalter (z. B. `https://…?isin={isin}`). Solange `null`, wird `url` genommen.
+- `active` – `false` blendet einen Broker aus.
+- Neuer Broker: einen weiteren Eintrag nach demselben Muster hinzufügen.
+
+Die Buttons sind automatisch mit „Werbung“ gekennzeichnet.
+
+## Impressum und Datenschutz
+
+`docs/impressum.html` und `docs/datenschutz.html` enthalten Platzhalter. Ersetze den Bereich zwischen `<!-- START -->` und `<!-- ENDE -->` durch den Text aus deinem Generator und lösche den gelben Kasten. In `datenschutz.html` steht als Kommentar, was du im Generator ankreuzen musst.
+
+## Design
+
+Farben, Schriften und Abstände für alle Seiten stehen in **`docs/styles.css`**. Die Schriften liegen in `docs/fonts/` (lokal, keine Verbindung zu Google).

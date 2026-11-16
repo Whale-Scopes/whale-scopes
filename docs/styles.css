@@ -1,0 +1,101 @@
+/* Whale Scopes – gemeinsames Design für alle Seiten */
+
+/* Schriften liegen auf dem eigenen Server (keine Verbindung zu Google) */
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('fonts/inter-tight-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #F4F9FE; --card: #FFFFFF; --line: #DCE9F5; --text: #0E1B2A; --muted: #5A6B7D;
+  --baby: #A9D8F5; --baby-soft: #E3F2FC; --blue-ink: #0B4F86;
+  --sell-soft: #FFE9DE; --sell-ink: #9A3A0A;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter Tight', Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue-ink); }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+/* Kopfzeile */
+header { background: #fff; border-bottom: 1px solid var(--line); }
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; letter-spacing: .06em; color: var(--text); text-decoration: none; }
+.status { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); background: var(--baby-soft); border-radius: 999px; padding: 7px 12px; }
+
+/* Startbereich */
+.hero { padding: 56px 0 24px; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--blue-ink); }
+h1 { margin: 12px 0 14px; font-size: clamp(34px, 5.5vw, 62px); line-height: 1.02; font-weight: 900; letter-spacing: -.02em; }
+.lead { margin: 0; font-size: 19px; line-height: 1.5; color: #33465A; max-width: 740px; }
+
+/* Abschnitte und Karten */
+section.moves { padding: 36px 0 12px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 20px; }
+h2 { margin: 0; font-size: 36px; font-weight: 900; letter-spacing: -.02em; }
+.sec-head p { margin: 0; color: var(--muted); font-size: 15px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 1px 2px rgba(14,27,42,.04); animation: rise .5s ease-out both; }
+.card.top { border: 2px solid var(--baby); }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+.who { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 52px; height: 52px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; background: var(--baby-soft); color: var(--blue-ink); border: 2px solid var(--baby); }
+.name { font-weight: 900; font-size: 19px; line-height: 1.15; }
+.sub { font-size: 13px; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.label { display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 12px; letter-spacing: .08em; border-radius: 7px; padding: 6px 10px; }
+.label.buy { background: var(--baby); color: #06304F; }
+.label.sell { background: var(--sell-soft); color: var(--sell-ink); }
+.new { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; background: var(--blue-ink); color: #fff; border-radius: 4px; padding: 3px 7px; }
+.threshold { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blue-ink); border: 1px dashed #8FBFE3; border-radius: 6px; padding: 4px 8px; }
+.company { font-size: 22px; font-weight: 800; line-height: 1.15; }
+.ticker { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); margin-top: 3px; }
+.amount { font-size: 50px; font-weight: 900; line-height: .95; letter-spacing: -.03em; }
+.amount-note { font-size: 14px; color: var(--muted); margin-top: 6px; }
+.note { margin: 0; font-size: 15px; line-height: 1.5; color: #33465A; flex-grow: 1; }
+.meta { font-size: 12px; color: var(--muted); line-height: 1.5; border-top: 1px solid var(--line); padding-top: 12px; }
+.empty { background: transparent; border: 2px dashed var(--line); box-shadow: none; justify-content: center; }
+.empty .note { flex-grow: 0; }
+
+/* Broker-Buttons (Werbung) */
+.brokers { background: var(--baby-soft); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.brokers-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 700; color: var(--blue-ink); }
+.ad { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--muted); border: 1px solid #B9CCDD; border-radius: 4px; padding: 2px 6px; background: #fff; }
+.brokers-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.broker-btn { flex: 1 1 auto; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; padding: 0 10px; border-radius: 10px; background: #fff; border: 1px solid var(--baby); color: var(--text); font-weight: 800; font-size: 13px; text-decoration: none; }
+.broker-btn:hover { background: var(--baby); }
+.broker-btn svg { flex: none; }
+
+/* Erklärung */
+.how { padding: 44px 0 56px; }
+.how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.how-grid div { border-top: 3px solid var(--baby); padding-top: 14px; }
+.how-grid strong { display: block; font-size: 18px; margin-bottom: 6px; }
+.how-grid span { font-size: 15px; line-height: 1.5; color: #33465A; }
+
+/* Fußzeile */
+footer { border-top: 1px solid var(--line); background: #fff; }
+.foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 28px 24px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+.foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.foot-links a { color: var(--text); font-weight: 700; text-decoration: none; }
+.foot-links a:hover { text-decoration: underline; }
+.disclaimer { max-width: 640px; }
+
+/* Unterseiten (Impressum, Datenschutz) */
+.legal { max-width: 760px; padding: 48px 24px 64px; }
+.legal h1 { font-size: clamp(32px, 5vw, 48px); }
+.legal h2 { font-size: 22px; margin: 32px 0 8px; }
+.legal p, .legal li { font-size: 16px; line-height: 1.65; color: #33465A; }
+.placeholder { background: #FFF6D6; border: 1px dashed #D8B64A; border-radius: 12px; padding: 14px 16px; color: #5C4A0E; font-size: 14px; line-height: 1.55; }
+.back { display: inline-block; margin-bottom: 8px; font-weight: 700; text-decoration: none; }

@@ -72,7 +72,7 @@ h2 { margin: 0; font-size: 36px; font-weight: 900; letter-spacing: -.02em; }
 .card.top { border: 2px solid var(--baby); }
 .who { display: flex; align-items: center; gap: 12px; }
 .avatar { width: 52px; height: 52px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 17px; background: var(--baby-soft); color: var(--blue-ink); border: 2px solid var(--baby); }
-.name { font-weight: 900; font-size: 19px; line-height: 1.15; }
+.name { margin: 0; font-weight: 900; font-size: 19px; line-height: 1.15; }
 .sub { font-size: 13px; color: var(--muted); }
 .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .label { display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 12px; letter-spacing: .08em; border-radius: 7px; padding: 6px 10px; }

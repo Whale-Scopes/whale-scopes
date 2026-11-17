@@ -1,6 +1,7 @@
-/* Whale Scopes – gemeinsame Funktionen für Investoren- und Politiker-Seite */
+/* Whale Scopes – gemeinsame Funktionen für Investoren- und Politiker-Seite.
+   Läuft im Browser und im Prerender-Skript (Node). */
 
-document.documentElement.classList.add('js');
+if (typeof document !== 'undefined') document.documentElement.classList.add('js');
 
 const WS = {
   esc(s) {
@@ -67,4 +68,4 @@ const WS = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => WS.reveal());
+if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded', () => WS.reveal());

@@ -77,3 +77,11 @@ Farben, Schriften und Abstände für alle Seiten stehen in **`docs/styles.css`**
 - Nach einer Änderung `lastUpdated` auf das heutige Datum setzen.
 
 Quellen: Abgeordnete → disclosures-clerk.house.gov, Präsident → Ethikbehörde OGE (Form 278-T).
+
+## SEO (Suchmaschinen)
+
+- **Karten im HTML:** `scripts/prerender.mjs` schreibt die Karten täglich fertig in `docs/index.html` und `docs/politiker.html` (zwischen den `<!-- PRERENDER:… -->`-Markierungen – dort nichts von Hand ändern). So sieht Google die Inhalte sofort. Die Karten-Darstellung steht in `docs/cards.js` und wird vom Browser und vom Skript gemeinsam genutzt.
+- Nach einer Änderung an `docs/politicians.json` aktualisiert der nächste tägliche Lauf auch die Politiker-Seite (oder sofort: Actions → Run workflow).
+- **Sitemap:** `docs/sitemap.xml` (automatisch), **Robots:** `docs/robots.txt`.
+- **Hauptadresse:** https://whale-scopes.com (Canonical-Tags).
+- **Vorschaubilder beim Teilen:** `docs/og-image.png` und `docs/og-image-politiker.png`.

@@ -129,6 +129,18 @@ footer { border-top: 1px solid var(--line); background: var(--surface); }
 .foot-links a:hover { text-decoration: underline; }
 .disclaimer { max-width: 640px; }
 
+/* Trustpilot-Button im Footer (normaler Link, lädt nichts von Trustpilot) */
+.foot-right { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.tp-badge { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
+.tp-badge:hover { border-color: #00B67A; transform: translateY(-1px); }
+.tp-stars { display: flex; gap: 2px; }
+.tp-stars svg { width: 20px; height: 20px; padding: 3px; background: #00B67A; fill: #FFFFFF; border-radius: 3px; }
+.tp-text { display: flex; flex-direction: column; line-height: 1.25; }
+.tp-text strong { font-size: 14px; font-weight: 800; }
+.tp-text small { font-size: 12px; color: var(--muted); }
+@media (max-width: 640px) { .foot-right { align-items: flex-start; } }
+@media (prefers-reduced-motion: reduce) { .tp-badge { transition: none; } }
+
 /* Unterseiten (Impressum, Datenschutz) */
 .legal { max-width: 760px; padding: 48px 24px 64px; }
 .legal h1 { font-size: clamp(32px, 5vw, 48px); }

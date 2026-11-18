@@ -1,2 +1,5 @@
-   [build]
-     publish = "docs"
+[build]
+  publish = "docs"
+  # Nur neu veröffentlichen, wenn sich etwas an der Website (docs/) oder an dieser Datei geändert hat.
+  # Jede Veröffentlichung kostet bei Netlify Credits; reine Prüfläufe ohne neue Daten werden so übersprungen.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- docs/ netlify.toml"

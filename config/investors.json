@@ -1,5 +1,5 @@
 {
-  "_info": "threshold = Mindestgröße in US-Dollar. ciks = SEC-Nummern der Fonds (mehrere möglich). options = Optionen (Calls/Puts) mitzählen. sub = Untertitel auf der Karte.",
+  "_info": "threshold = Mindestgröße in US-Dollar. ciks = SEC-Nummern der Fonds (mehrere möglich). options = Optionen (Calls/Puts) mitzählen. sub = Untertitel auf der Karte. excludeIssuers = Namensteile von Emittenten, die nie als Trade zählen (z. B. eigene Gesellschaften des Investors).",
   "investors": [
     {
       "id": "berkshire",
@@ -10,7 +10,10 @@
       "ciks": [
         "1067983"
       ],
-      "options": false
+      "options": false,
+      "excludeIssuers": [
+        "BERKSHIRE HATHAWAY"
+      ]
     },
     {
       "id": "ackman",
@@ -22,7 +25,10 @@
         "2026053",
         "1336528"
       ],
-      "options": false
+      "options": false,
+      "excludeIssuers": [
+        "PERSHING SQUARE"
+      ]
     },
     {
       "id": "tepper",
@@ -33,7 +39,8 @@
       "ciks": [
         "1656456"
       ],
-      "options": false
+      "options": false,
+      "excludeIssuers": []
     },
     {
       "id": "druckenmiller",
@@ -44,7 +51,8 @@
       "ciks": [
         "1536411"
       ],
-      "options": false
+      "options": false,
+      "excludeIssuers": []
     },
     {
       "id": "burry",
@@ -55,7 +63,8 @@
       "ciks": [
         "1649339"
       ],
-      "options": true
+      "options": true,
+      "excludeIssuers": []
     }
   ]
 }

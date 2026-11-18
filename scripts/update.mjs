@@ -114,6 +114,9 @@ const fmtShares = n => n >= 1e6
   ? (n / 1e6).toLocaleString('de-DE', { maximumFractionDigits: n >= 1e7 ? 0 : 1 }) + ' Mio.'
   : Math.round(n).toLocaleString('de-DE');
 
+// Eigene Gesellschaften eines Investors (z. B. Pershing Square bei Ackman) sind keine Trades
+const isExcluded = (inv, name) => (inv.excludeIssuers || []).some(x => normName(name || '').includes(normName(x)));
+
 export function findMoves(inv, curG, prevG) {
   const best = { buy: null, sell: null };
   for (const k of new Set([...curG.keys(), ...prevG.keys()])) {
@@ -122,6 +125,7 @@ export function findMoves(inv, curG, prevG) {
     if (!d) continue;
     const pc = (c || p).putCall;
     if (pc && !inv.options) continue;
+    if (isExcluded(inv, (c || p).issuer)) continue;
 
     let side;
     if (!pc) side = d > 0 ? 'buy' : 'sell';
@@ -253,7 +257,9 @@ async function main() {
     const found = c.cusips.map(x => tickers[x]).filter(Boolean);
     const optWord = c.putCall === 'put' ? 'Put-Optionen' : 'Call-Optionen';
     c.ticker = [...new Set(found.map(f => f.ticker))].join(' · ');
-    c.company = prettyName(found[0] && found[0].name ? found[0].name : c.issuer) + (c.putCall ? ` (${optWord})` : '');
+    const figi = prettyName(found[0] && found[0].name ? found[0].name : c.issuer);
+    const sec = prettyName(c.issuer);
+    c.company = (sec.length > figi.length ? sec : figi) + (c.putCall ? ` (${optWord})` : '');
     c.isin = cusipToIsin(c.cusips[0]);
     delete c.issuer; delete c.cusips; delete c.putCall;
   }
@@ -262,7 +268,8 @@ async function main() {
   const byId = Object.fromEntries(investors.map(i => [i.id, i]));
   const cards = new Map();
   for (const t of state.trades || []) {
-    if (byId[t.investor] && t.value >= byId[t.investor].threshold) cards.set(t.investor + ':' + t.side, t);
+    const inv = byId[t.investor];
+    if (inv && t.value >= inv.threshold && !isExcluded(inv, t.company)) cards.set(t.investor + ':' + t.side, t);
   }
   let changed = 0;
   for (const c of candidates) {
@@ -272,12 +279,19 @@ async function main() {
     else if (c.asOf === cur.asOf) cards.set(key, Object.assign(c, { addedAt: cur.addedAt || null, auto: true }));
   }
 
-  const out = {
-    lastChecked: now,
+  const content = {
     investors: investors.map(({ id, name, sub, initials, threshold }) => ({ id, name, sub, initials, threshold })),
     trades: [...cards.values()]
   };
-  await writeFile(OUT, JSON.stringify(out, null, 2) + '\n');
+  // Nur speichern, wenn sich an den Daten wirklich etwas geändert hat. Sonst bleibt die Datei
+  // unverändert – und Netlify muss die Seite nicht neu veröffentlichen (spart Credits).
+  const same = JSON.stringify(content) === JSON.stringify({ investors: state.investors, trades: state.trades });
+  if (same) {
+    console.log('No data changes – trades.json stays as it is.');
+  } else {
+    // lastChecked = Zeitpunkt der letzten Datenänderung
+    await writeFile(OUT, JSON.stringify({ lastChecked: now, ...content }, null, 2) + '\n');
+  }
   console.log(`Done. ${changed} new big move(s). ${errors.length ? 'Errors for: ' + errors.join(', ') : ''}`);
   if (errors.length === investors.length) process.exit(1);
 }

@@ -31,5 +31,8 @@ jobs:
         run: |
           git config user.name "whale-scopes-bot"
           git config user.email "whale-scopes-bot@users.noreply.github.com"
-          git add docs/trades.json docs/index.html docs/politiker.html docs/sitemap.xml
+          # Kleine Notiz außerhalb von docs/, damit GitHub den Zeitplan aktiv lässt.
+          # Netlify veröffentlicht dafür NICHT neu (siehe netlify.toml), kostet also keine Credits.
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/last-run.txt
+          git add docs/trades.json docs/index.html docs/politiker.html docs/sitemap.xml .github/last-run.txt
           git diff --cached --quiet || (git commit -m "Update big moves" && git push)

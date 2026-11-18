@@ -86,7 +86,7 @@ const WSCards = {
 
   investorStatus(data) {
     return data.lastChecked
-      ? 'Zuletzt geprüft: ' + new Date(data.lastChecked).toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' })
+      ? 'Datenstand: ' + new Date(data.lastChecked).toLocaleDateString('de-DE', { day: 'numeric', month: 'short', year: 'numeric' })
       : 'Eingebaute Daten';
   },
 

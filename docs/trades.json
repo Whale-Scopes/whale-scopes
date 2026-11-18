@@ -71,22 +71,6 @@
       "auto": true
     },
     {
-      "side": "buy",
-      "label": "NEW POSITION",
-      "value": 10309165762,
-      "valueType": "position",
-      "note": "Komplett neue Position mit 184 Mio. Aktien.",
-      "investor": "ackman",
-      "disclosed": "2026-11-16",
-      "asOf": "2026-09-30",
-      "source": "https://www.sec.gov/Archives/edgar/data/2026053/000117266126005427/",
-      "ticker": "PS",
-      "company": "Pershing Square Inc.",
-      "isin": "US71531U1025",
-      "addedAt": "2026-11-17T16:12:29.256Z",
-      "auto": true
-    },
-    {
       "side": "sell",
       "label": "POSITION REDUCTION",
       "value": 1098606668,
@@ -113,7 +97,7 @@
       "asOf": "2026-09-30",
       "source": "https://www.sec.gov/Archives/edgar/data/1656456/000165645626000004/",
       "ticker": "SPCX",
-      "company": "Space Exploration Techn",
+      "company": "Space Exploration Technologies Corp.",
       "isin": "US84615Q1031",
       "addedAt": "2026-11-17T16:12:29.256Z",
       "auto": true

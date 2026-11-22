@@ -224,6 +224,10 @@ footer { border-top: 1px solid var(--line); background: var(--surface); }
   .how-grid span { font-size: 13.5px; }
 
   .foot-inner { padding: 22px 14px; }
+  .legal { padding: 24px 14px 40px; }
+  .legal h1 { font-size: 30px; }
+  .legal h2 { font-size: 19px; margin-top: 26px; }
+  .legal p, .legal li { font-size: 15px; }
 }
 
 /* Dunkle Politiker-Seite: Kopfzeile ebenfalls in Babyblau */

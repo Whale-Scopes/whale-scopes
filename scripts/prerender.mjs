@@ -55,6 +55,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${SITE}</loc><lastmod>${indexMod}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>${SITE}politiker.html</loc><lastmod>${polMod}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>${SITE}faq.html</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
 `;
 let old = '';

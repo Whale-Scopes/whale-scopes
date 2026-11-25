@@ -167,7 +167,8 @@ footer { border-top: 1px solid var(--line); background: var(--surface); }
 
   /* Kopfzeile in Babyblau, bleibt beim Scrollen oben */
   header { position: sticky; top: 0; z-index: 20; background: #A9D8F5; border-bottom: 0; box-shadow: 0 2px 12px rgba(6,48,79,.12); }
-  .bar { padding: 12px 0; flex-wrap: nowrap; }
+  .bar { padding: 12px 10px; flex-wrap: nowrap; gap: 10px; }
+  .logo { white-space: nowrap; flex-shrink: 0; }
   .logo { font-size: 16px; gap: 8px; color: #06304F; }
   .logo svg { width: 22px; height: 22px; stroke: #06304F; }
   .status { font-size: 10px; padding: 5px 9px; background: rgba(255,255,255,.6); color: #06304F; white-space: nowrap; }
@@ -237,7 +238,7 @@ footer { border-top: 1px solid var(--line); background: var(--surface); }
   body.dark .logo svg { stroke: #06304F; }
 }
 
-/* Sehr schmale Handys: Karten wieder einzeln, damit nichts gequetscht wird */
+/* Schmale Handys: Karten wieder einzeln, damit nichts gequetscht wird */
 @media (max-width: 340px) {
   .grid { grid-template-columns: minmax(0, 1fr); }
 }
@@ -250,3 +251,14 @@ footer { border-top: 1px solid var(--line); background: var(--surface); }
 .pin-hint { margin: -6px 0 0; max-width: 300px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--baby-soft); color: var(--body); font-size: 13px; line-height: 1.5; text-align: left; }
 .pin-hint strong { color: var(--text); }
 .pin-hint .pin-share { width: 15px; height: 15px; vertical-align: -2px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Schmale Handys: Kopfzeile etwas kompakter, damit Logo und Datum mit Abstand zum Rand nebeneinander passen */
+@media (max-width: 400px) {
+  .logo { font-size: 14px; gap: 6px; }
+  .logo svg { width: 20px; height: 20px; }
+  .status { font-size: 9px; padding: 4px 7px; letter-spacing: -0.01em; }
+}
+@media (max-width: 340px) {
+  .status { font-size: 8px; padding: 4px 6px; }
+  .logo { font-size: 13px; }
+}

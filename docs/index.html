@@ -25,6 +25,8 @@
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="Whale Scopes">
 <link rel="preload" href="fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 <!-- Besucherstatistik ohne Cookies (Umami, siehe Datenschutzerklärung) -->
@@ -306,7 +308,9 @@
       <a href="faq.html">FAQ</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
+      <button type="button" id="pin-btn" class="pin-btn" data-umami-event="startbildschirm" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 8v8M8 12h8"/></svg>Auf Startbildschirm</button>
     </nav>
+      <p id="pin-hint" class="pin-hint" role="status" hidden></p>
       <a class="tp-badge" href="https://de.trustpilot.com/review/whale-scopes.com" target="_blank" rel="noopener">
         <span class="tp-stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg></span>
         <span class="tp-text"><strong>Bewerte uns auf Trustpilot</strong><small>Deine Meinung hilft uns</small></span>
@@ -341,5 +345,6 @@ async function update() {
 update();
 setInterval(update, RELOAD_MINUTES * 60 * 1000);
 </script>
+<script src="pin.js" defer></script>
 </body>
 </html>

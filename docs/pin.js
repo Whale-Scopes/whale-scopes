@@ -8,14 +8,19 @@
    Es werden keine Daten gespeichert oder verschickt. */
 (function () {
   var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
-  var btn = document.getElementById('pin-btn');
+  var btns = document.querySelectorAll('#pin-btn, .pin-card');
   var hint = document.getElementById('pin-hint');
-  if (!btn || !hint) return;
-  btn.hidden = false;
+  if (!btns.length || !hint) return;
+  for (var i = 0; i < btns.length; i++) btns[i].hidden = false;
+  function markInstalled() {
+    var cta = document.querySelector('.pin-card-cta');
+    if (standalone && cta) cta.textContent = '✓ Installiert';
+  }
+  markInstalled();
 
   var deferred = null;
   window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; });
-  window.addEventListener('appinstalled', function () { standalone = true; });
+  window.addEventListener('appinstalled', function () { standalone = true; markInstalled(); });
 
   var ua = navigator.userAgent || '';
   var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -38,7 +43,7 @@
     return 'Drücke <strong>' + (isMac ? '⌘ + D' : 'Strg + D') + '</strong>, um Whale Scopes als Lesezeichen zu speichern.';
   }
 
-  btn.addEventListener('click', function () {
+  function onClick() {
     if (deferred) {
       var ev = deferred; deferred = null;
       ev.prompt();
@@ -46,5 +51,6 @@
     }
     hint.innerHTML = text();
     hint.hidden = false;
-  });
+  }
+  for (var j = 0; j < btns.length; j++) btns[j].addEventListener('click', onClick);
 })();

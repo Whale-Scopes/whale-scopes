@@ -262,3 +262,19 @@ footer { border-top: 1px solid var(--line); background: var(--surface); }
   .status { font-size: 8px; padding: 4px 6px; }
   .logo { font-size: 13px; }
 }
+
+/* Handy: App-Karte statt Text-Link, aufgeräumte Footer-Links (Laptop bleibt unverändert) */
+.pin-card { display: none; }
+@media (max-width: 640px) {
+  .foot-right { width: 100%; }
+  .pin-card:not([hidden]) { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); color: var(--text); font: inherit; text-align: left; cursor: pointer; box-shadow: var(--shadow); order: 0; }
+  .pin-card img { width: 46px; height: 46px; border-radius: 11px; flex: none; box-shadow: 0 1px 3px rgba(6,48,79,.18); }
+  .pin-card-text { display: flex; flex-direction: column; flex: 1; min-width: 0; line-height: 1.3; }
+  .pin-card-text strong { font-size: 15px; }
+  .pin-card-text small { font-size: 13px; color: var(--muted); }
+  .pin-card-cta { flex: none; padding: 8px 14px; border-radius: 999px; background: var(--baby); color: #06304F; font-size: 13px; font-weight: 800; }
+  .pin-hint { order: 1; margin: -4px 0 0; max-width: none; width: 100%; box-sizing: border-box; }
+  .foot-links { order: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; width: 100%; font-size: 14px; }
+  .foot-links .pin-btn { display: none; }
+  .tp-badge { order: 3; }
+}
